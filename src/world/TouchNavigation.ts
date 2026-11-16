@@ -3,7 +3,12 @@ import gsap from 'gsap';
 import { AnimationController, AstronautPoseState } from './AnimationController';
 import { CrewRole } from '@/core/types';
 
-export type QuickStationId = 'tambo-alfa' | 'solar-panels' | 'water-recycler' | 'rover-jezero';
+export type QuickStationId =
+  | 'tambo-alfa'
+  | 'solar-panels'
+  | 'water-recycler'
+  | 'rover-bay'
+  | 'rover-jezero';
 
 export interface StaticObstacleCollider {
   id: string;
@@ -61,6 +66,10 @@ export class TouchNavigation {
 
   private commanderTargetPos: THREE.Vector3 | null = null;
   private roverTargetPos: THREE.Vector3 | null = null;
+  private commanderMoveElapsed = 0;
+  private roverMoveElapsed = 0;
+  private commanderBypassSign: 1 | -1 = 1;
+  private roverBypassSign: 1 | -1 = 1;
   private activeNearNpcRole: 'ENGINEER' | 'SCIENTIST' | 'MEDIC' | null = null;
 
   private activeTask: ActivePhysicalTaskState | null = null;
@@ -88,21 +97,21 @@ export class TouchNavigation {
     maxRadiusRover: 62,
   };
 
-  // Obstáculos físicos sólidos de la base para evitar que personajes o el Rover atraviesen estructuras
+  // Obstáculos físicos ajustados al contorno real de cada modelo 3D (sin solapamientos entre sí)
   private readonly staticObstacles: StaticObstacleCollider[] = [
-    { id: 'tambo-alfa-core', x: 0, z: 0, radius: 5.5 },
-    { id: 'solar-array-east', x: 14, z: -2, radius: 4.1 },
-    { id: 'solar-array-west', x: -14, z: -2, radius: 4.1 },
-    { id: 'water-recycler-skid', x: 5, z: 4, radius: 2.7 },
-    { id: 'meda-weather-station', x: 18, z: 14, radius: 2.1 },
+    { id: 'tambo-alfa-core', x: 0, z: 0, radius: 3.3 },
+    { id: 'solar-array-east', x: 14, z: -2, radius: 2.1 },
+    { id: 'solar-array-west', x: -14, z: -2, radius: 2.1 },
+    { id: 'water-recycler-skid', x: 5, z: 4, radius: 1.1 },
+    { id: 'meda-weather-station', x: 18, z: 14, radius: 1.1 },
   ];
 
-  // Coordenadas reales de los 4 Science_Node en jezero-terrain.glb
+  // Coordenadas accesibles de los 4 Science_Node en jezero-terrain.glb
   private readonly scienceNodePositions: THREE.Vector3[] = [
-    new THREE.Vector3(30, -2.05, 27), // Science_Node_02_Jezero_Delta_Deposit
-    new THREE.Vector3(-20, -0.65, 37), // Science_Node_03_Neretva_Riverbed
-    new THREE.Vector3(56, -12.15, 52), // Science_Node_01_Jezero_Crater_Core
-    new THREE.Vector3(-45, 1.25, -48), // Science_Node_04_North_Butte
+    new THREE.Vector3(28, -2.05, 25), // Science_Node_02_Jezero_Delta_Deposit
+    new THREE.Vector3(-19, -0.65, 34), // Science_Node_03_Neretva_Riverbed
+    new THREE.Vector3(42, -8.5, 39), // Science_Node_01_Jezero_Crater_Core
+    new THREE.Vector3(-36, 1.25, -38), // Science_Node_04_North_Butte
   ];
 
   constructor(scene: THREE.Scene, animationController: AnimationController) {
@@ -306,40 +315,47 @@ export class TouchNavigation {
       }
     }
 
-    // 1. Colisión contra edificios y estructuras fijas
-    for (const obs of this.staticObstacles) {
-      const dx = resolvedX - obs.x;
-      const dz = resolvedZ - obs.z;
-      const dist = Math.hypot(dx, dz);
-      const minAllowed = obs.radius + unitRadius;
-      if (dist < minAllowed) {
-        const nx = dist > 0.0001 ? dx / dist : 1;
-        const nz = dist > 0.0001 ? dz / dist : 0;
-        resolvedX = obs.x + nx * minAllowed;
-        resolvedZ = obs.z + nz * minAllowed;
+    // 1. Colisión contra edificios y estructuras fijas (2 pasadas para evitar quedar atrapado entre 2 bordes)
+    for (let pass = 0; pass < 2; pass++) {
+      for (const obs of this.staticObstacles) {
+        const dx = resolvedX - obs.x;
+        const dz = resolvedZ - obs.z;
+        const dist = Math.hypot(dx, dz);
+        const minAllowed = obs.radius + unitRadius;
+        if (dist < minAllowed) {
+          const nx = dist > 0.0001 ? dx / dist : 0;
+          const nz = dist > 0.0001 ? dz / dist : 1;
+          resolvedX = obs.x + nx * minAllowed;
+          resolvedZ = obs.z + nz * minAllowed;
+        }
       }
     }
 
-    // 2. Colisión contra el Rover Perseverance
+    // 2. Colisión contra el Rover Perseverance (solo para peatones, con radio ajustado al chasis real)
     if (selfId !== 'rover' && this.roverGroup) {
       const dx = resolvedX - this.roverGroup.position.x;
       const dz = resolvedZ - this.roverGroup.position.z;
       const dist = Math.hypot(dx, dz);
-      const minAllowed = 2.35 + unitRadius;
+      const minAllowed = 1.3 + unitRadius;
       if (dist < minAllowed) {
-        const nx = dist > 0.0001 ? dx / dist : 1;
+        const nx = dist > 0.0001 ? dx / dist : -1;
         const nz = dist > 0.0001 ? dz / dist : 0;
         resolvedX = this.roverGroup.position.x + nx * minAllowed;
         resolvedZ = this.roverGroup.position.z + nz * minAllowed;
       }
     }
 
-    // 3. Colisión contra el personaje principal
+    // Si es el Rover en movimiento, no bloquearlo contra astronautas/NPCs
+    if (selfId === 'rover') {
+      return { x: resolvedX, z: resolvedZ };
+    }
+
+    // 3. Colisión de los NPCs contra el personaje principal (los NPCs ceden el paso al jugador)
     if (selfId !== 'commander' && this.commanderGroup) {
       const dx = resolvedX - this.commanderGroup.position.x;
       const dz = resolvedZ - this.commanderGroup.position.z;
       const dist = Math.hypot(dx, dz);
-      const minAllowed = 0.95 + unitRadius;
+      const minAllowed = 0.55 + unitRadius;
       if (dist < minAllowed) {
         const nx = dist > 0.0001 ? dx / dist : 1;
         const nz = dist > 0.0001 ? dz / dist : 0;
@@ -348,18 +364,24 @@ export class TouchNavigation {
       }
     }
 
-    // 4. Colisión contra los especialistas NPC
-    for (const npc of this.npcAgents) {
-      if (npc.id === selfId) continue;
-      const dx = resolvedX - npc.group.position.x;
-      const dz = resolvedZ - npc.group.position.z;
-      const dist = Math.hypot(dx, dz);
-      const minAllowed = 0.95 + unitRadius;
-      if (dist < minAllowed) {
-        const nx = dist > 0.0001 ? dx / dist : 1;
-        const nz = dist > 0.0001 ? dz / dist : 0;
-        resolvedX = npc.group.position.x + nx * minAllowed;
-        resolvedZ = npc.group.position.z + nz * minAllowed;
+    // 4. Colisión contra los especialistas NPC:
+    // Si el jugador se dirige automáticamente a una estación o misión, los NPCs NUNCA lo bloquean.
+    const isCommanderNavigating =
+      selfId === 'commander' && (this.commanderTargetPos !== null || this.activeTask !== null);
+
+    if (!isCommanderNavigating) {
+      for (const npc of this.npcAgents) {
+        if (npc.id === selfId) continue;
+        const dx = resolvedX - npc.group.position.x;
+        const dz = resolvedZ - npc.group.position.z;
+        const dist = Math.hypot(dx, dz);
+        const minAllowed = 0.45 + unitRadius;
+        if (dist < minAllowed) {
+          const nx = dist > 0.0001 ? dx / dist : 1;
+          const nz = dist > 0.0001 ? dz / dist : 0;
+          resolvedX = npc.group.position.x + nx * minAllowed;
+          resolvedZ = npc.group.position.z + nz * minAllowed;
+        }
       }
     }
 
@@ -367,9 +389,97 @@ export class TouchNavigation {
   }
 
   /**
+   * Calcula el siguiente paso hacia (targetX, targetZ) rodeando suavemente cualquier obstáculo circular
+   * (base, paneles solares, reciclador o Rover) sin quedarse atascado jamás.
+   */
+  private computeSteeredStep(
+    currentX: number,
+    currentZ: number,
+    targetX: number,
+    targetZ: number,
+    step: number,
+    unitRadius: number,
+    selfId: string,
+    preferredSign: 1 | -1
+  ): { x: number; z: number; yaw: number; chosenSign: 1 | -1 } {
+    const dx = targetX - currentX;
+    const dz = targetZ - currentZ;
+    const baseDist = Math.hypot(dx, dz);
+    if (baseDist <= 0.0001) {
+      return { x: currentX, z: currentZ, yaw: 0, chosenSign: preferredSign };
+    }
+
+    const baseAngle = Math.atan2(dx, dz);
+
+    // 1. Probar línea recta directa hacia el destino
+    const directX = currentX + Math.sin(baseAngle) * step;
+    const directZ = currentZ + Math.cos(baseAngle) * step;
+    const resolvedDirect = this.resolvePositionWithCollisions(directX, directZ, unitRadius, selfId);
+    const directNewDist = Math.hypot(targetX - resolvedDirect.x, targetZ - resolvedDirect.z);
+    const directProgress = baseDist - directNewDist;
+
+    if (directProgress >= step * 0.72) {
+      return {
+        x: resolvedDirect.x,
+        z: resolvedDirect.z,
+        yaw: baseAngle,
+        chosenSign: preferredSign,
+      };
+    }
+
+    // 2. Si hay un edificio u obstáculo enfrente, probar ángulos tangenciales a ambos lados
+    const candidateOffsets = [
+      0.45 * preferredSign,
+      -0.45 * preferredSign,
+      0.85 * preferredSign,
+      -0.85 * preferredSign,
+      1.25 * preferredSign,
+      -1.25 * preferredSign,
+      1.62 * preferredSign,
+      -1.62 * preferredSign,
+    ];
+
+    let bestX = resolvedDirect.x;
+    let bestZ = resolvedDirect.z;
+    let bestYaw = baseAngle;
+    let bestScore = -Infinity;
+    let bestSign: 1 | -1 = preferredSign;
+
+    for (const offset of candidateOffsets) {
+      const angle = baseAngle + offset;
+      const candX = currentX + Math.sin(angle) * step;
+      const candZ = currentZ + Math.cos(angle) * step;
+      const res = this.resolvePositionWithCollisions(candX, candZ, unitRadius, selfId);
+      const moved = Math.hypot(res.x - currentX, res.z - currentZ);
+      if (moved < step * 0.35) continue;
+
+      const newDist = Math.hypot(targetX - res.x, targetZ - res.z);
+      const progress = baseDist - newDist;
+      const sign: 1 | -1 = offset >= 0 ? 1 : -1;
+      const signBonus = sign === preferredSign ? step * 0.12 : 0;
+      const score = progress + moved * 0.35 + signBonus;
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestX = res.x;
+        bestZ = res.z;
+        bestYaw = Math.atan2(res.x - currentX, res.z - currentZ);
+        bestSign = sign;
+      }
+    }
+
+    return {
+      x: bestX,
+      z: bestZ,
+      yaw: bestYaw,
+      chosenSign: bestSign,
+    };
+  }
+
+  /**
    * Ejecuta una tarea física real en la simulación:
    * 1. El Astronauta Principal (o el Rover) se desplaza físicamente hasta la estación.
-   * 2. El especialista NPC correspondiente también acude a ayudar.
+   * 2. El especialista NPC correspondiente también acude a ayudar (ubicándose a un lado sin estorbar).
    * 3. Al llegar, realizan la animación de trabajo (barrer paneles, reparar tubos, regar plantas, escanear)
    *    con efectos visuales 3D y barra de progreso antes de aplicar la recompensa.
    */
@@ -381,17 +491,23 @@ export class TouchNavigation {
       lookAtPoint = new THREE.Vector3(14, 1.0, -2);
     } else if (request.stationId === 'water-recycler') {
       lookAtPoint = new THREE.Vector3(5, 1.0, 4);
+    } else if (request.stationId === 'rover-bay') {
+      lookAtPoint = this.roverGroup ? this.roverGroup.position.clone() : new THREE.Vector3(0, 1.0, 12);
     } else if (request.stationId === 'rover-jezero') {
       lookAtPoint = dest.clone();
     }
 
-    // Enviar también al especialista NPC correspondiente a trabajar junto al jugador
+    // Enviar también al especialista NPC correspondiente a trabajar junto al jugador sin bloquear su destino
     if (request.helperRole) {
       const helperNpc = this.npcAgents.find((n) => n.roleKey === request.helperRole);
       if (helperNpc) {
         helperNpc.state = 'ASSISTING_PLAYER';
         helperNpc.stateTimer = 8.0;
-        helperNpc.assistTarget = new THREE.Vector2(dest.x + 1.5, dest.z + 1.1);
+        const npcAnchor =
+          request.stationId === 'rover-jezero'
+            ? new THREE.Vector2(2.4, 11.2)
+            : new THREE.Vector2(dest.x - 1.9, dest.z + 1.3);
+        helperNpc.assistTarget = npcAnchor;
         helperNpc.assistPose = request.pose;
       }
     }
@@ -423,11 +539,11 @@ export class TouchNavigation {
    * Los astronautas corren hacia la esclusa del hábitat Tambo Alfa durante la tormenta de aterrizaje.
    */
   public triggerEmergencyRushToHabitat(): void {
-    this.moveAstronautTo(new THREE.Vector3(0, 0.15, 6.4));
+    this.moveAstronautTo(new THREE.Vector3(0, 0.15, 5.6));
     this.npcAgents.forEach((npc, idx) => {
       npc.state = 'ASSISTING_PLAYER';
       npc.stateTimer = 6.0;
-      npc.assistTarget = new THREE.Vector2((idx - 1) * 2.2, 6.8);
+      npc.assistTarget = new THREE.Vector2((idx - 1) * 2.4, 6.6);
       npc.assistPose = 'WORKING';
     });
   }
@@ -460,13 +576,13 @@ export class TouchNavigation {
     const distanceFromBase = Math.hypot(worldPoint.x, worldPoint.z);
 
     if (distanceFromBase <= 30) {
-      const safeXZ = this.resolvePositionWithCollisions(worldPoint.x, worldPoint.z, 0.85, 'commander');
+      const safeXZ = this.resolvePositionWithCollisions(worldPoint.x, worldPoint.z, 0.4, 'commander');
       const groundY = this.sampleTerrainHeight(safeXZ.x, safeXZ.z, worldPoint.y);
       const targetPos = new THREE.Vector3(safeXZ.x, groundY + 0.05, safeXZ.z);
       this.moveAstronautTo(targetPos);
       return { unitMoved: 'astronaut', destination: targetPos };
     } else {
-      const safeXZ = this.resolvePositionWithCollisions(worldPoint.x, worldPoint.z, 1.8, 'rover');
+      const safeXZ = this.resolvePositionWithCollisions(worldPoint.x, worldPoint.z, 1.1, 'rover');
       const groundY = this.sampleTerrainHeight(safeXZ.x, safeXZ.z, worldPoint.y);
       const targetPos = new THREE.Vector3(safeXZ.x, groundY + 0.08, safeXZ.z);
       this.moveRoverTo(targetPos);
@@ -476,42 +592,53 @@ export class TouchNavigation {
 
   public moveAstronautTo(destination: THREE.Vector3): void {
     if (!this.commanderGroup) return;
-    const safeXZ = this.resolvePositionWithCollisions(destination.x, destination.z, 0.85, 'commander');
+    const safeXZ = this.resolvePositionWithCollisions(destination.x, destination.z, 0.4, 'commander');
     const groundY = this.sampleTerrainHeight(safeXZ.x, safeXZ.z, destination.y);
     this.commanderTargetPos = new THREE.Vector3(safeXZ.x, groundY + 0.05, safeXZ.z);
+    this.commanderMoveElapsed = 0;
     this.showGroundMarker(this.commanderTargetPos, 0xf59e0b);
   }
 
   public cancelAstronautTarget(): void {
     this.commanderTargetPos = null;
+    this.commanderMoveElapsed = 0;
     this.hideGroundMarker();
   }
 
   public moveRoverTo(destination: THREE.Vector3): void {
     if (!this.roverGroup) return;
-    const safeXZ = this.resolvePositionWithCollisions(destination.x, destination.z, 1.8, 'rover');
+    const safeXZ = this.resolvePositionWithCollisions(destination.x, destination.z, 1.1, 'rover');
     const groundY = this.sampleTerrainHeight(safeXZ.x, safeXZ.z, destination.y);
     this.roverTargetPos = new THREE.Vector3(safeXZ.x, groundY + 0.08, safeXZ.z);
+    this.roverMoveElapsed = 0;
     this.showGroundMarker(this.roverTargetPos, 0x38bdf8);
   }
 
   public navigateToStation(stationId: QuickStationId): THREE.Vector3 {
     if (stationId === 'tambo-alfa') {
-      const dest = new THREE.Vector3(0.0, 0.15, 6.6);
+      const dest = new THREE.Vector3(0.0, 0.15, 5.6);
       this.moveAstronautTo(dest);
       return dest;
     }
     if (stationId === 'solar-panels') {
-      const dest = new THREE.Vector3(9.4, 0.15, -1.8);
+      const dest = new THREE.Vector3(10.2, 0.15, -2.0);
       this.moveAstronautTo(dest);
       return dest;
     }
     if (stationId === 'water-recycler') {
-      const dest = new THREE.Vector3(4.8, 0.15, 7.2);
+      const dest = new THREE.Vector3(5.0, 0.15, 6.4);
+      this.moveAstronautTo(dest);
+      return dest;
+    }
+    if (stationId === 'rover-bay') {
+      const roverPos = this.roverGroup ? this.roverGroup.position : new THREE.Vector3(0, 0.15, 12);
+      const dest = new THREE.Vector3(roverPos.x - 2.4, 0.15, roverPos.z - 0.6);
       this.moveAstronautTo(dest);
       return dest;
     }
 
+    // Estación 'rover-jezero': Acercar al astronauta a la bahía de control y enviar al Rover al nodo científico
+    this.moveAstronautTo(new THREE.Vector3(-2.4, 0.15, 11.2));
     const targetNodePos =
       this.scienceNodePositions[this.scienceNodeCycleIndex % this.scienceNodePositions.length];
     this.scienceNodeCycleIndex += 1;
@@ -567,54 +694,53 @@ export class TouchNavigation {
       this.groundMarkerGroup.rotation.y = elapsedTime * 1.8;
     }
 
-    // 1. Movimiento Tap-to-Move del Astronauta Principal
+    // 1. Movimiento inteligente con evasión de obstáculos del Astronauta Principal
     if (this.commanderGroup) {
       if (isDirectInputMoving) {
         this.commanderTargetPos = null;
+        this.commanderMoveElapsed = 0;
         this.animationController.setAstronautWalking('commander', true);
         this.animationController.setAstronautPose('commander', 'IDLE');
       } else if (this.commanderTargetPos) {
+        this.commanderMoveElapsed += deltaTime;
         const dx = this.commanderTargetPos.x - this.commanderGroup.position.x;
         const dz = this.commanderTargetPos.z - this.commanderGroup.position.z;
         const dist = Math.hypot(dx, dz);
 
-        if (dist <= 0.32) {
+        const arrivalTolerance = this.activeTask ? 0.65 : 0.42;
+
+        if (dist <= arrivalTolerance || this.commanderMoveElapsed >= 3.6) {
+          this.commanderGroup.position.x = this.commanderTargetPos.x;
+          this.commanderGroup.position.z = this.commanderTargetPos.z;
+          this.clampObjectToTerrain(this.commanderGroup, 0.05);
           this.commanderTargetPos = null;
+          this.commanderMoveElapsed = 0;
           this.animationController.setAstronautWalking('commander', false);
           this.hideGroundMarker();
         } else {
-          const step = Math.min(dist, 6.2 * deltaTime);
-          const dirX = dx / dist;
-          const dirZ = dz / dist;
+          const walkSpeed = this.activeTask ? 7.4 : 6.4;
+          const step = Math.min(dist, walkSpeed * deltaTime);
 
-          let nextPos = this.resolvePositionWithCollisions(
-            this.commanderGroup.position.x + dirX * step,
-            this.commanderGroup.position.z + dirZ * step,
-            0.85,
-            'commander'
+          const steered = this.computeSteeredStep(
+            this.commanderGroup.position.x,
+            this.commanderGroup.position.z,
+            this.commanderTargetPos.x,
+            this.commanderTargetPos.z,
+            step,
+            0.4,
+            'commander',
+            this.commanderBypassSign
           );
-          const movedDist = Math.hypot(
-            nextPos.x - this.commanderGroup.position.x,
-            nextPos.z - this.commanderGroup.position.z
-          );
-          if (movedDist < step * 0.25) {
-            nextPos = this.resolvePositionWithCollisions(
-              this.commanderGroup.position.x - dirZ * step,
-              this.commanderGroup.position.z + dirX * step,
-              0.85,
-              'commander'
-            );
-          }
+          this.commanderBypassSign = steered.chosenSign;
 
-          this.commanderGroup.position.x = nextPos.x;
-          this.commanderGroup.position.z = nextPos.z;
+          this.commanderGroup.position.x = steered.x;
+          this.commanderGroup.position.z = steered.z;
           this.clampObjectToTerrain(this.commanderGroup, 0.05);
 
-          const targetYaw = Math.atan2(dirX, dirZ);
           this.commanderGroup.rotation.y = this.lerpAngle(
             this.commanderGroup.rotation.y,
-            targetYaw,
-            10 * deltaTime
+            steered.yaw,
+            11 * deltaTime
           );
           this.animationController.setAstronautWalking('commander', true);
         }
@@ -624,35 +750,43 @@ export class TouchNavigation {
       }
     }
 
-    // 2. Movimiento con colisiones y altura de terreno del Rover Perseverance
+    // 2. Movimiento con evasión de obstáculos y altura de terreno del Rover Perseverance
     if (this.roverGroup && this.roverTargetPos) {
+      this.roverMoveElapsed += deltaTime;
       const dx = this.roverTargetPos.x - this.roverGroup.position.x;
       const dz = this.roverTargetPos.z - this.roverGroup.position.z;
       const dist = Math.hypot(dx, dz);
 
-      if (dist <= 0.5) {
+      if (dist <= 0.85 || this.roverMoveElapsed >= 3.8) {
+        this.roverGroup.position.x = this.roverTargetPos.x;
+        this.roverGroup.position.z = this.roverTargetPos.z;
+        this.clampObjectToTerrain(this.roverGroup, 0.08);
         this.roverTargetPos = null;
+        this.roverMoveElapsed = 0;
         this.animationController.setRoverMoving(false);
         this.hideGroundMarker();
       } else {
-        const step = Math.min(dist, 11.5 * deltaTime);
-        const dirX = dx / dist;
-        const dirZ = dz / dist;
-        const nextPos = this.resolvePositionWithCollisions(
-          this.roverGroup.position.x + dirX * step,
-          this.roverGroup.position.z + dirZ * step,
-          1.8,
-          'rover'
+        const step = Math.min(dist, 14.0 * deltaTime);
+        const steered = this.computeSteeredStep(
+          this.roverGroup.position.x,
+          this.roverGroup.position.z,
+          this.roverTargetPos.x,
+          this.roverTargetPos.z,
+          step,
+          1.1,
+          'rover',
+          this.roverBypassSign
         );
-        this.roverGroup.position.x = nextPos.x;
-        this.roverGroup.position.z = nextPos.z;
+        this.roverBypassSign = steered.chosenSign;
+
+        this.roverGroup.position.x = steered.x;
+        this.roverGroup.position.z = steered.z;
         this.clampObjectToTerrain(this.roverGroup, 0.08);
 
-        const targetYaw = Math.atan2(dirX, dirZ);
         this.roverGroup.rotation.y = this.lerpAngle(
           this.roverGroup.rotation.y,
-          targetYaw,
-          7 * deltaTime
+          steered.yaw,
+          8 * deltaTime
         );
         this.animationController.setRoverMoving(true);
       }
@@ -771,17 +905,21 @@ export class TouchNavigation {
         const dist = Math.hypot(dx, dz);
 
         if (dist > 0.45) {
-          const step = Math.min(dist, 4.2 * deltaTime);
-          const nextXZ = this.resolvePositionWithCollisions(
-            npc.group.position.x + (dx / dist) * step,
-            npc.group.position.z + (dz / dist) * step,
-            0.85,
-            npc.id
+          const step = Math.min(dist, 4.6 * deltaTime);
+          const steered = this.computeSteeredStep(
+            npc.group.position.x,
+            npc.group.position.z,
+            npc.assistTarget.x,
+            npc.assistTarget.y,
+            step,
+            0.4,
+            npc.id,
+            1
           );
-          npc.group.position.x = nextXZ.x;
-          npc.group.position.z = nextXZ.z;
+          npc.group.position.x = steered.x;
+          npc.group.position.z = steered.z;
           this.clampObjectToTerrain(npc.group, 0.05);
-          npc.group.rotation.y = this.lerpAngle(npc.group.rotation.y, Math.atan2(dx, dz), 9 * deltaTime);
+          npc.group.rotation.y = this.lerpAngle(npc.group.rotation.y, steered.yaw, 9 * deltaTime);
           this.animationController.setAstronautWalking(npc.id, true);
           this.animationController.setAstronautPose(npc.id, 'IDLE');
         } else {
@@ -895,34 +1033,22 @@ export class TouchNavigation {
       } else {
         const speed = 2.4;
         const step = Math.min(dist, speed * deltaTime);
-        const dirX = dx / dist;
-        const dirZ = dz / dist;
-
-        let nextXZ = this.resolvePositionWithCollisions(
-          npc.group.position.x + dirX * step,
-          npc.group.position.z + dirZ * step,
-          0.85,
-          npc.id
+        const steered = this.computeSteeredStep(
+          npc.group.position.x,
+          npc.group.position.z,
+          targetWp.x,
+          targetWp.y,
+          step,
+          0.4,
+          npc.id,
+          1
         );
-        const actualMoved = Math.hypot(
-          nextXZ.x - npc.group.position.x,
-          nextXZ.z - npc.group.position.z
-        );
-        if (actualMoved < step * 0.25) {
-          nextXZ = this.resolvePositionWithCollisions(
-            npc.group.position.x - dirZ * step,
-            npc.group.position.z + dirX * step,
-            0.85,
-            npc.id
-          );
-        }
 
-        npc.group.position.x = nextXZ.x;
-        npc.group.position.z = nextXZ.z;
+        npc.group.position.x = steered.x;
+        npc.group.position.z = steered.z;
         this.clampObjectToTerrain(npc.group, 0.05);
 
-        const targetYaw = Math.atan2(dirX, dirZ);
-        npc.group.rotation.y = this.lerpAngle(npc.group.rotation.y, targetYaw, 7 * deltaTime);
+        npc.group.rotation.y = this.lerpAngle(npc.group.rotation.y, steered.yaw, 7 * deltaTime);
         this.animationController.setAstronautWalking(npc.id, true);
         this.animationController.setAstronautPose(npc.id, 'IDLE');
       }

@@ -106,6 +106,8 @@ export class SceneManager {
           this.touchNavigation.navigateToStation('solar-panels');
         } else if (target.category === 'water-recycler') {
           this.touchNavigation.navigateToStation('water-recycler');
+        } else if (target.category === 'mars-rover') {
+          this.touchNavigation.navigateToStation('rover-bay');
         } else if (target.category === 'science-node') {
           this.touchNavigation.moveRoverTo(target.focusPoint);
         }
@@ -346,16 +348,16 @@ export class SceneManager {
       mat.color.setRGB(0.95, 0.75, 0.1);
       mat.needsUpdate = true;
     });
-    flightEngineer.position.set(9.2, 0.15, -1.8);
+    flightEngineer.position.set(11.4, 0.15, -5.2);
     flightEngineer.rotation.y = Math.PI * 0.45;
     AssetLoader.configureShadows(flightEngineer, { castShadow: true, receiveShadow: true });
     this.scene.add(flightEngineer);
     this.animationController.registerAstronaut('flight-engineer', flightEngineer, false, 3.1);
     this.touchNavigation.registerAutonomousNpc('flight-engineer', 'ENGINEER', flightEngineer, [
-      new THREE.Vector2(9.2, -1.8),
-      new THREE.Vector2(6.5, 6.8),
-      new THREE.Vector2(-9.2, -1.8),
-      new THREE.Vector2(2.8, 7.6),
+      new THREE.Vector2(11.4, -5.2),
+      new THREE.Vector2(7.2, 6.4),
+      new THREE.Vector2(-10.8, -4.8),
+      new THREE.Vector2(3.4, 8.6),
     ]);
 
     // D. Medic Officer (NPC Coral/Blanco: 0.92, 0.22, 0.28) explorando Hábitat y Soporte Vital
@@ -766,14 +768,42 @@ export class SceneManager {
         gsap.killTweensOf(this.controls.target);
 
         this.touchNavigation.cancelAstronautTarget();
-        const desiredX = this.commanderGroup.position.x + activeMoveX * 5.4 * deltaTime;
-        const desiredZ = this.commanderGroup.position.z + activeMoveZ * 5.4 * deltaTime;
-        const safeXZ = this.touchNavigation.resolvePositionWithCollisions(
+        const step = 5.4 * deltaTime;
+        const desiredX = this.commanderGroup.position.x + activeMoveX * step;
+        const desiredZ = this.commanderGroup.position.z + activeMoveZ * step;
+        let safeXZ = this.touchNavigation.resolvePositionWithCollisions(
           desiredX,
           desiredZ,
-          0.85,
+          0.4,
           'commander'
         );
+        const moved = Math.hypot(
+          safeXZ.x - this.commanderGroup.position.x,
+          safeXZ.z - this.commanderGroup.position.z
+        );
+        if (moved < step * 0.25) {
+          const slideLeft = this.touchNavigation.resolvePositionWithCollisions(
+            this.commanderGroup.position.x - activeMoveZ * step,
+            this.commanderGroup.position.z + activeMoveX * step,
+            0.4,
+            'commander'
+          );
+          const slideRight = this.touchNavigation.resolvePositionWithCollisions(
+            this.commanderGroup.position.x + activeMoveZ * step,
+            this.commanderGroup.position.z - activeMoveX * step,
+            0.4,
+            'commander'
+          );
+          const distL = Math.hypot(
+            slideLeft.x - this.commanderGroup.position.x,
+            slideLeft.z - this.commanderGroup.position.z
+          );
+          const distR = Math.hypot(
+            slideRight.x - this.commanderGroup.position.x,
+            slideRight.z - this.commanderGroup.position.z
+          );
+          safeXZ = distL >= distR ? slideLeft : slideRight;
+        }
         this.commanderGroup.position.x = safeXZ.x;
         this.commanderGroup.position.z = safeXZ.z;
         this.touchNavigation.clampObjectToTerrain(this.commanderGroup, 0.05);

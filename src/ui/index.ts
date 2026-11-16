@@ -2284,7 +2284,7 @@ export class UIManager implements MissionHudController {
           this.sceneManager.navigateUnitToStation('solar-panels');
           this.activeBottomMenu = 'BUILD';
         } else if (pinId === 'pin-rover') {
-          this.sceneManager.focusQuickPreset('rover');
+          this.sceneManager.navigateUnitToStation('rover-bay');
           this.activeBottomMenu = 'EXPLORE';
         } else if (pinId === 'pin-greenhouse') {
           this.sceneManager.navigateUnitToStation('tambo-alfa');
