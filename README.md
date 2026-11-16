@@ -2,8 +2,6 @@
 
 # KHIPU MARS
 
-### Simulador Interactivo 3D de Supervivencia, Ciencia de la NASA y Sabiduría Andina en el Planeta Rojo
-
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Three.js](https://img.shields.io/badge/Three.js-r170-000000?style=for-the-badge&logo=threedotjs&logoColor=white)](https://threejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -19,7 +17,7 @@
 
 | Recurso | Enlace |
 | :--- | :--- |
-| **Deploy en Vivo (Producción)** | [**https://khipu-mars.vercel.app**](https://khipu-mars.vercel.app) *(Reemplazar con URL final de despliegue)* |
+| **Deploy en Vivo (Producción)** | [**https://khipu-mars.tech**](https://khipu-mars.tech) |
 | **Video Demo Oficial** | [**Ver Video Demo de KHIPU MARS**](https://youtu.be/TU_ID_DE_VIDEO_DEMO) *(Reemplazar con enlace de YouTube / Vimeo)* |
 
 </div>
