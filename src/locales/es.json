@@ -1,0 +1,404 @@
+{
+  "app": {
+    "title": "KHIPU MARS",
+    "subtitle": "Aventura de Supervivencia en Marte",
+    "loading": "Cargando la base marciana en 3D...",
+    "missionDuration": "Misión de 28 Días en Marte"
+  },
+  "loading": {
+    "title": "PREPARANDO EL PLANETA MARTE EN 3D...",
+    "subtitle": "Cargando modelos espaciales..."
+  },
+  "splash": {
+    "title": "KHIPU MARS",
+    "subtitle": "MISIÓN DE 28 DÍAS EN MARTE",
+    "start": "COMENZAR",
+    "chooseLanguage": "Idioma del juego"
+  },
+  "welcome": {
+    "title": "¡BIENVENIDO!",
+    "headline": "¡BIENVENIDO!",
+    "message": "ESTÁS A CARGO DE LA PRIMERA BASE EN MARTE. TIENES 28 DÍAS PARA CONSTRUIR LA COLONIA Y MANTENER VIVA A TU TRIPULACIÓN. ¿ACEPTAS LA MISIÓN?",
+    "story": "ESTÁS A CARGO DE LA PRIMERA BASE EN MARTE. TIENES 28 DÍAS PARA CONSTRUIR LA COLONIA Y MANTENER VIVA A TU TRIPULACIÓN. ¿ACEPTAS LA MISIÓN?",
+    "hint": "Elige tu rol, cuida el aire, el agua, la comida y la energía, y guía a tus compañeros durante 28 días marcianos.",
+    "back": "ATRÁS",
+    "next": "SIGUIENTE"
+  },
+  "intro": {
+    "skip": "Saltar Intro",
+    "nextScene": "Siguiente Escena",
+    "prevScene": "Escena Anterior",
+    "chooseRoleBtn": "ELEGIR TU ROL DE MISIÓN",
+    "audioOn": "Sonido Espacial: Activo",
+    "audioOff": "Sonido Espacial: Silencio",
+    "scene1": {
+      "tag": "ESCENA 1 DE 4: EL DESPEGUE DEL FUTURO",
+      "title": "Hábitat MARS-EF03 en el Cráter Jezero",
+      "text": "Año 2038. Misión CHAPEA-3. Cuatro astronautas aterrizan en Marte con una meta: demostrar que los humanos pueden vivir 500 soles en el Planeta Rojo."
+    },
+    "scene2": {
+      "tag": "ESCENA 2 DE 4: EL INCIDENTE",
+      "title": "Alerta Roja en el Módulo de Carga",
+      "text": "¡Alerta en el aterrizaje! Una tormenta repentina daña el módulo de carga y se pierden reservas vitales. La tripulación entra de emergencia al hábitat."
+    },
+    "scene3": {
+      "tag": "ESCENA 3 DE 4: LA CUENTA REGRESIVA (CONEXIÓN NASA-ESA)",
+      "title": "Cápsula de Suministros de la ESA en Órbita",
+      "text": "La Tierra escucha, pero está muy lejos. Una cápsula de rescate de la ESA en órbita llegará con nuevos suministros en 28 soles."
+    },
+    "scene4": {
+      "tag": "ESCENA 4 DE 4: TU MISIÓN",
+      "title": "Khipu Mission Ledger Encendido",
+      "text": "Cada decisión cuenta. Usa el Khipu para equilibrar energía, agua, cultivos y radiación. Tu reto: mantener viva la misión durante 28 soles."
+    }
+  },
+  "tutorial": {
+    "badge": "TUTORIAL DE SIMULACIÓN",
+    "skip": "Omitir Tutorial",
+    "next": "Siguiente Paso",
+    "finish": "¡Comenzar Simulación!",
+    "step1": {
+      "title": "Paso 1: Tus 4 Barras Vitales y el Khipu",
+      "desc": "En la barra superior ves Oxígeno, Energía, Comida y Agua, y a la derecha el Khipu. Si alguno llega a 0% o la Radiación sube a 100%, la misión fracasa. Debes resistir hasta el Sol 28."
+    },
+    "step2": {
+      "title": "Paso 2: Tu Astronauta y tus 3 Especialistas",
+      "desc": "Tú controlas al astronauta principal tocando el suelo marciano. Tus 3 compañeros (Ingeniero, Científica y Médico) trabajan en las estaciones exteriores y te ayudan cuando realizas una tarea."
+    },
+    "step3": {
+      "title": "Paso 3: Acciones Reales en la Colonia",
+      "desc": "Pulsa CULTIVAR, CONSTRUIR o EXPLORAR abajo (o toca un edificio en 3D). Tu astronauta caminará hasta la estación y realizará físicamente el trabajo con su equipo antes de darte los recursos."
+    },
+    "step4": {
+      "title": "Paso 4: Avanzar de Sol y Superar Emergencias",
+      "desc": "Después de realizar tus tareas del día, pulsa el botón naranja Siguiente Día arriba a la derecha. Cuando ocurra una tormenta o avería, elige cómo resolverla junto a tu tripulación."
+    }
+  },
+  "taskProgress": {
+    "moving": "Desplazándose hacia la estación...",
+    "working": "Ejecutando tarea en la estación con el equipo...",
+    "done": "¡Tarea completada!",
+    "pcControlsHint": "Haz clic en el suelo marciano o usa WASD para caminar con tu astronauta"
+  },
+  "roles": {
+    "screenTitle": "ELIGE TU ROL",
+    "screenSubtitle": "ELIGE TU ESPECIALIDAD CON CUIDADO",
+    "title": "ELIGE TU ROL",
+    "subtitle": "ELIGE TU ESPECIALIDAD CON CUIDADO",
+    "footer": "Elige tu especialidad. Tu rol decidirá cómo ayudas a tu tripulación a sobrevivir en Marte.",
+    "selectBtn": "ELEGIR",
+    "selectedLabel": "Rol elegido:",
+    "roleSelectedLabel": "Rol elegido:",
+    "startingMission": "INICIANDO MISIÓN...",
+    "changeRoleBtn": "CAMBIAR ROL",
+    "startDay1Btn": "INICIAR DÍA 1",
+    "startDay1": "INICIAR DÍA 1",
+    "commander": {
+      "title": "Comandante",
+      "desc": "Lidera la misión. Toma las decisiones finales cuando hay peligro en la colonia.",
+      "perk": "Ventaja de Comandante: Ahorras más oxígeno y energía al organizar al equipo en emergencias."
+    },
+    "engineer": {
+      "title": "Ingeniero",
+      "desc": "Repara las máquinas. Mantén funcionando la electricidad, el agua y los paneles solares.",
+      "perk": "Ventaja de Ingeniero: Gastas menos piezas y recuperas más energía al limpiar paneles o reparar tuberías."
+    },
+    "medic": {
+      "title": "Médico",
+      "desc": "Cuida la salud de los astronautas y protégelos de las tormentas de radiación del Sol.",
+      "perk": "Ventaja de Médico: Reduces mucho más la radiación y mantienes sana a toda la tripulación."
+    },
+    "scientist": {
+      "title": "Científico",
+      "desc": "Investiga el suelo de Marte con el Rover y cultiva plantas en el invernadero.",
+      "perk": "Ventaja de Científico: Tus plantas crecen más rápido y el Rover encuentra más agua y minerales."
+    }
+  },
+  "hud": {
+    "day": "DÍA",
+    "act": "ACTO",
+    "oxygen": "Oxígeno",
+    "energy": "Energía",
+    "food": "Comida",
+    "water": "Agua",
+    "radiation": "Radiación",
+    "signal": "Señal",
+    "minutes": "min",
+    "metal": "Metal",
+    "scrap": "Piezas",
+    "nextDay": "Siguiente Día"
+  },
+  "khipu": {
+    "title": "KHIPU",
+    "subtitle": "Registro Andino Espacial",
+    "food": "Comida",
+    "energy": "Energía",
+    "radiation": "Alerta",
+    "supplies": "Agua",
+    "legend": "Cada nudo encendido representa un 20% de reserva en la base."
+  },
+  "missions": {
+    "step1": "MISIÓN 1: Primero necesitamos comida. Toca el botón CULTIVAR o el pin del Invernadero para regar las plantas.",
+    "step2": "MISIÓN 2: ¡Muy bien! Las plantas dan comida y aire limpio, pero usan agua. Revisa los Paneles Solares o el Reciclador.",
+    "step3": "MISIÓN 3: Camina con tu astronauta tocando el suelo o usa EXPLORAR para enviar al Rover por hielo de agua.",
+    "step4": "MISIÓN 4: Mantén altas tus barras de Oxígeno, Energía y Comida hasta llegar al Día 28. Si hay alerta, protege al equipo."
+  },
+  "pins": {
+    "greenhouse": "Invernadero",
+    "habitat": "Hábitat",
+    "solarPanels": "Paneles Solares",
+    "waterRecycler": "Reciclador de Agua",
+    "waterSystem": "Reciclador de Agua",
+    "rover": "Rover Explorador",
+    "antenna": "Antena Chaski"
+  },
+  "npc": {
+    "socialBubble": "Compañero de Base",
+    "greetingScientist": "¡Hola! Soy la Científica. Estoy revisando las muestras del cráter y las plantas del invernadero.",
+    "greetingEngineer": "¡Hola! Soy el Ingeniero. Estoy vigilando que el polvo rojo no tape nuestros paneles solares.",
+    "greetingMedic": "¡Hola! Soy el Médico. Recuerda revisar la barra de radiación y descansar dentro del hábitat."
+  },
+  "crew": {
+    "commander": "Comandante de Misión",
+    "flightEngineer": "Especialista Ingeniero",
+    "scienceOfficer": "Especialista Científico",
+    "medicOfficer": "Especialista Médico"
+  },
+  "cultivateMenu": {
+    "title": "Invernadero de Plantas Espaciales",
+    "subtitle": "Las plantas nos dan comida fresca y oxígeno para respirar",
+    "water": {
+      "title": "REGAR PLANTAS",
+      "good": "+15% Comida y +Oxígeno fresco",
+      "bad": "Usa -6% de Agua guardada"
+    },
+    "harvest": {
+      "title": "COSECHAR",
+      "good": "+10% Comida, +Oxígeno y +10 Piezas",
+      "bad": "Usa -5% de Energía de las luces"
+    },
+    "inspect": {
+      "title": "CUIDAR LUCES",
+      "good": "+8% Crecimiento y baja la radiación",
+      "bad": "Usa -3% de Energía"
+    }
+  },
+  "buildMenu": {
+    "title": "Construir y Reparar la Base",
+    "subtitle": "Mantén limpias y seguras las máquinas de la colonia",
+    "cleanPanels": {
+      "title": "LIMPIAR PANELES",
+      "good": "+25% Energía eléctrica limpia",
+      "bad": "Usa -5 Piezas y un poco de Oxígeno"
+    },
+    "repairWater": {
+      "title": "MEJORAR RECICLADOR",
+      "good": "+20% Agua limpia sin fugas",
+      "bad": "Usa -4 Metal y -5% Energía"
+    },
+    "shieldHabitat": {
+      "title": "REFORZAR ESCUDO",
+      "good": "Reduce la Radiación y protege al equipo",
+      "bad": "Usa -6 Metal y -5% Energía"
+    }
+  },
+  "exploreMenu": {
+    "title": "Explorar el Planeta Marte",
+    "subtitle": "Busca recursos en el Cráter Jezero con el Rover o camina por la base",
+    "roverIce": {
+      "title": "ENVIAR ROVER POR HIELO",
+      "good": "+20% Agua nueva y +4 Metal",
+      "bad": "Usa -8% Energía de batería"
+    },
+    "moxieAir": {
+      "title": "FABRICAR OXÍGENO",
+      "good": "+15% Oxígeno limpio del aire marciano",
+      "bad": "Usa -6% Energía"
+    },
+    "walkSolar": {
+      "title": "INSPECCIONAR PANELES",
+      "good": "+12% Energía al sacudir el polvo",
+      "bad": "Usa un poco de Oxígeno al caminar"
+    }
+  },
+  "consequences": {
+    "title": "Resultado de tu decisión",
+    "goodLabel": "Lo bueno:",
+    "badLabel": "El costo:",
+    "roleBonusLabel": "Bono de tu Rol"
+  },
+  "events": {
+    "scientificFactLabel": "Dato Científico:",
+    "scientificFactTitle": "Dato Científico:",
+    "eventA": {
+      "title": "ALERTA: TORMENTA DE POLVO",
+      "subtitle": "Una nube gigante de polvo rojo tapa el Sol y ensucia los paneles solares.",
+      "fact": "En Marte, las tormentas de polvo pueden durar días y bloquear la luz del Sol, reduciendo la electricidad de la base.",
+      "opt1": {
+        "title": "DESVIAR ENERGÍA",
+        "desc": "Protege el aire y el calor de la base, pero las plantas crecen más lento hoy.",
+        "badge": "+Oxígeno y Calor / -Ritmo de Plantas",
+        "feedback": "Desviaste la electricidad para mantener caliente y segura a toda la tripulación."
+      },
+      "opt2": {
+        "title": "LIMPIAR PANELES",
+        "desc": "Sales a barrer el polvo rojo para recuperar mucha electricidad.",
+        "badge": "+30% Energía / -Un poco de Oxígeno",
+        "feedback": "Limpiaste los paneles solares con éxito. La energía de la base volvió a subir."
+      },
+      "opt3": {
+        "title": "ESPERAR EN BASE",
+        "desc": "Todos esperan seguros dentro del hábitat hasta que pase el viento.",
+        "badge": "Equipo Seguro / -10% Energía",
+        "feedback": "La tripulación esperó segura dentro de la base hasta que pasó la tormenta de polvo."
+      }
+    },
+    "eventB": {
+      "title": "ALERTA: AVERÍA EN EL RECICLADOR DE AGUA",
+      "subtitle": "La baliza roja parpadea porque una tubería está perdiendo agua limpia.",
+      "fact": "En el espacio los astronautas reciclan casi cada gota de agua para que nunca falte en la colonia.",
+      "opt1": {
+        "title": "REPARAR AHORA",
+        "desc": "Sella la tubería con metal para recuperar toda el agua limpia.",
+        "badge": "+20% Agua / -Metal y Energía",
+        "feedback": "Reparaste el reciclador de agua y apagaste la alarma roja. Ya no se pierde agua."
+      },
+      "opt2": {
+        "title": "MODO AHORRO",
+        "desc": "Frena la fuga sin gastar energía, pero las plantas reciben menos agua hoy.",
+        "badge": "0% Costo de Energía / -Ritmo de Plantas",
+        "feedback": "Activaste el modo ahorro de agua. La fuga se detuvo sin gastar electricidad."
+      },
+      "opt3": {
+        "title": "ENVIAR ROVER POR HIELO",
+        "desc": "El Rover busca hielo en el cráter para llenar los tanques de agua.",
+        "badge": "+25% Agua / -10% Energía",
+        "feedback": "El Rover regresó del Cráter Jezero cargado de hielo de agua limpia."
+      }
+    },
+    "eventC": {
+      "title": "ALERTA: TORMENTA SOLAR",
+      "subtitle": "El Sol lanzó una ola de radiación peligrosa hacia Marte.",
+      "fact": "Como Marte tiene una atmósfera muy delgada, los astronautas deben protegerse dentro del refugio cuando hay tormentas solares.",
+      "opt1": {
+        "title": "ENTRAR AL REFUGIO",
+        "desc": "Activa el escudo máximo del hábitat para bajar la radiación.",
+        "badge": "-Radiación / Equipo 100% Seguro",
+        "feedback": "Toda la tripulación entró al refugio blindado. La radiación bajó a niveles seguros."
+      },
+      "opt2": {
+        "title": "PAUSAR CAMINATAS",
+        "desc": "Nadie sale hoy al exterior para ahorrar oxígeno y evitar peligro.",
+        "badge": "+10% Oxígeno y Energía",
+        "feedback": "Suspendiste las salidas exteriores a tiempo, ahorrando oxígeno y cuidando al equipo."
+      },
+      "opt3": {
+        "title": "SEGUIR TRABAJANDO",
+        "desc": "Ganas energía extra afuera, pero sube el peligro de radiación.",
+        "badge": "+20% Energía / +Peligro Radiación",
+        "feedback": "Conseguiste más electricidad, pero la radiación acumulada de la tripulación subió."
+      }
+    },
+    "eventD": {
+      "title": "AVISO: REMOLINO LIMPIADOR",
+      "subtitle": "Un remolino de viento marciano pasa cerca de la base.",
+      "fact": "El micrófono del Rover Perseverance grabó remolinos de viento en Marte que ayudan a limpiar el polvo de los paneles solares.",
+      "opt1": {
+        "title": "USAR EL VIENTO",
+        "desc": "Inclina los paneles para que el viento limpie el polvo gratis.",
+        "badge": "+25% Energía Gratis",
+        "feedback": "El viento marciano barrió el polvo de los paneles solares y subió la energía."
+      },
+      "opt2": {
+        "title": "INVESTIGAR CON ROVER",
+        "desc": "Estudia el remolino y usa la energía para impulsar el invernadero.",
+        "badge": "+15% Comida y +Oxígeno",
+        "feedback": "Investigaste el remolino con éxito y ayudaste a que las plantas crezcan más rápido."
+      },
+      "opt3": {
+        "title": "GUARDAR AGUA",
+        "desc": "Cierra las compuertas de humedad para conservar más agua limpia.",
+        "badge": "+10% Agua / -2% Energía",
+        "feedback": "Protegiste las reservas de humedad del invernadero y ganaste agua extra."
+      }
+    }
+  },
+  "navigation": {
+    "tapGroundHint": "Toca el suelo o usa las flechas",
+    "walkToBase": "Ir al Hábitat",
+    "walkToPanels": "Ir a Paneles"
+  },
+  "actions": {
+    "explore": "EXPLORAR",
+    "build": "CONSTRUIR",
+    "cultivate": "CULTIVAR",
+    "spaceWeather": "Clima Espacial",
+    "checkBase": "Revisar Base"
+  },
+  "guide": {
+    "title": "Guía Rápida de Misión",
+    "touchRotate": "Rotar cámara: Arrastra con 1 dedo o con el clic izquierdo del ratón.",
+    "touchZoom": "Acercar o alejar: Pellizca con 2 dedos o usa la rueda del ratón.",
+    "touchTap": "Mover astronauta: Toca cualquier punto del terreno marciano o usa las flechas para caminar y saludar a tus compañeros.",
+    "close": "ENTENDIDO"
+  },
+  "targets": {
+    "tamboAlfa": {
+      "title": "Hábitat Central e Invernadero",
+      "subtitle": "Aquí viven los astronautas, crecen las plantas y se controla la colonia."
+    },
+    "solarEast": {
+      "title": "Paneles Solares Este",
+      "subtitle": "Atrapan la luz del Sol para dar electricidad a toda la base."
+    },
+    "solarWest": {
+      "title": "Paneles Solares Oeste",
+      "subtitle": "Ayudan a cargar las baterías durante el día marciano."
+    },
+    "marsRover": {
+      "title": "Rover Explorador Perseverance",
+      "subtitle": "Viaja por el Cráter Jezero para buscar hielo de agua y minerales."
+    },
+    "waterRecycler": {
+      "title": "Reciclador de Agua",
+      "subtitle": "Limpia y reutiliza el agua para que nunca falte en la colonia."
+    },
+    "medaStation": {
+      "title": "Estación del Clima Marciano",
+      "subtitle": "Mide la velocidad del viento, el frío y el polvo en el aire."
+    },
+    "scienceNode1": {
+      "title": "Centro del Cráter Jezero",
+      "subtitle": "Antiguo lago marciano con hielo de agua bajo las rocas."
+    },
+    "scienceNode2": {
+      "title": "Delta del Río Antiguo",
+      "subtitle": "Rocas ricas en minerales e historia marciana."
+    },
+    "scienceNode3": {
+      "title": "Canal del Río Neretva",
+      "subtitle": "Zona ideal para explorar con el Rover."
+    },
+    "scienceNode4": {
+      "title": "Colina del Norte",
+      "subtitle": "Punto alto para observar tormentas de polvo."
+    }
+  },
+  "endScreens": {
+    "youWin": "¡GANASTE!",
+    "winSubtitle": "¡MISIÓN CUMPLIDA EN MARTE!",
+    "winSummary": "¡Sobreviviste los 28 días en Marte, cuidaste el invernadero y mantuviste a toda tu tripulación sana y salva!",
+    "gameOver": "FIN DEL JUEGO",
+    "loseSubtitle": "LA COLONIA NECESITA REINTENTAR LA MISIÓN",
+    "loseHint": "Vigila siempre las barras de Oxígeno, Energía y Agua, y usa la ventaja de tu Rol durante las tormentas.",
+    "startOver": "JUGAR DE NUEVO"
+  },
+  "simulation": {
+    "defeat": {
+      "water": "La base se quedó sin agua. Recuerda reparar el reciclador y enviar al Rover por hielo.",
+      "oxygen": "Se agotó el oxígeno. Cuida las plantas del invernadero para producir aire fresco.",
+      "energy": "Se agotaron las baterías. Recuerda limpiar el polvo de los paneles solares.",
+      "radiation": "La radiación subió demasiado. Usa el refugio del hábitat durante las tormentas solares."
+    }
+  }
+}

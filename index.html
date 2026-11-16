@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>KHIPU MARS (Astranoesis - NASA Space Apps 2026)</title>
+  <meta name="description"
+    content="Simulador interactivo de gestión de recursos y toma de decisiones en el Cráter Jezero, Marte." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body class="bg-slate-950 text-slate-100 overflow-hidden select-none antialiased">
+  <!-- Contenedor del Canvas 3D Three.js (100dvw x 100dvh Mobile-First) -->
+  <div id="canvas-container" class="fixed inset-0 w-[100dvw] h-[100dvh] z-0"></div>
+
+  <!-- Capa de Interfaz de Usuario (HUD, Khipu Tracker, Telemetría NASA y Decisiones) -->
+  <div id="ui-layer" class="fixed inset-0 w-[100dvw] h-[100dvh] z-10 pointer-events-none flex flex-col justify-between">
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

@@ -1,0 +1,404 @@
+{
+  "app": {
+    "title": "KHIPU MARS",
+    "subtitle": "Marte suyupi kawsay pukllana",
+    "loading": "3D Marte wasita kargashan...",
+    "missionDuration": "28 P'unchaw Marte Puriy"
+  },
+  "loading": {
+    "title": "3D MARTE SUYUTA WAKICHISHAN...",
+    "subtitle": "Hanaq pacha rikch'aykunata kargashan..."
+  },
+  "splash": {
+    "title": "KHIPU MARS",
+    "subtitle": "28 P'UNCHAW MARTE SUYUPI",
+    "start": "QALLARIY",
+    "chooseLanguage": "Pukllana simi"
+  },
+  "welcome": {
+    "title": "¡ALLINLLACHU!",
+    "headline": "¡ALLINLLACHU!",
+    "message": "MARTE SUYUPI ÑAWPAQ WASITA UMALLINKI. 28 P'UNCHAWMI KAPUSUNKI LLAQTATA HATARICHINAPAQ LLAPAN AYLLUTATAQ KAWSACHINAPAQ. ¿CHASKINKICHU?",
+    "story": "MARTE SUYUPI ÑAWPAQ WASITA UMALLINKI. 28 P'UNCHAWMI KAPUSUNKI LLAQTATA HATARICHINAPAQ LLAPAN AYLLUTATAQ KAWSACHINAPAQ. ¿CHASKINKICHU?",
+    "hint": "Ruwaynikita akllay, samay wayrata, yakuta, mikhuyta, kallpatawan waqaychay 28 p'unchaw Marte suyupi.",
+    "back": "QHIPAMAN",
+    "next": "ÑAWPAQMAN"
+  },
+  "intro": {
+    "skip": "Intro Paway",
+    "nextScene": "Qatiq Rikch'ay",
+    "prevScene": "Ñawpaq Rikch'ay",
+    "chooseRoleBtn": "RUWAYNIKITA AKLLAY",
+    "audioOn": "Hanaq Pacha Taki: Kawsachisqa",
+    "audioOff": "Hanaq Pacha Taki: Upallachisqa",
+    "scene1": {
+      "tag": "1 RIKCH'AY: HAMUQ PACHAQ PHAWAYNIN",
+      "title": "MARS-EF03 Hatun Wasi Jezero T'oqopi",
+      "text": "2038 Wata. CHAPEA-3 Puriy. Tawa hanaq pacha puriqkuna Marte suyuman chayamunku huk munaywan: runakuna 500 p'unchaw Puka Planeta suyupi kawsay atisqankuta rikuchiy."
+    },
+    "scene2": {
+      "tag": "2 RIKCH'AY: SASACHAKUY PACHA",
+      "title": "Q'ipi Wasipi Puka Willakuy",
+      "text": "¡Chayamuypi willakuy! Qunqaylla puka allpa wayra q'ipi wasita waqllichin, kawsaypaq waqaychasqakunataq chinkapun. Llapan ayllu utqaylla hatun wasiman haykun."
+    },
+    "scene3": {
+      "tag": "3 RIKCH'AY: YUPAY URAYKACHIY (NASA-ESA TINKUY)",
+      "title": "Hanaq Pachapi ESA Yanapaq Antawa",
+      "text": "Tiksimuyuqa uyarimushanmi, ichaqa anchatan karunchasqa kashan. Hanaq pachapi ESA yanapaq antawaqa 28 p'unchawmantan musuq mikhuykunawan chayamunqa."
+    },
+    "scene4": {
+      "tag": "4 RIKCH'AY: KAMACHIYNIKI",
+      "title": "Khipu Yupana Kawsachisqa",
+      "text": "Sapa akllasqaykin chaninniyuq. Khiputa apaykachay kallpata, yakuta, yurakunata, Inti wach'itawan tupachinapaq. Kamachiynikiqa: 28 p'unchaw kawsayta waqaychay."
+    }
+  },
+  "tutorial": {
+    "badge": "PUKLLANA YACHACHIY",
+    "skip": "Yachachiyta Paway",
+    "next": "Qatiq Tatki",
+    "finish": "¡Pukllayta Qallariy!",
+    "step1": {
+      "title": "1 Tatki: 4 Kawsay Tupukuna Khipuwan",
+      "desc": "Patapi Samay Wayra, Kallpa, Mikhuy, Yaku ima rikukun, pañapitaq Khipu. Sichus 0% uraykun utaq Inti Wach'i 100% chayan, puriyqa waqllipunmi. 28 p'unchawkaman kawsanayki."
+    },
+    "step2": {
+      "title": "2 Tatki: Astronautayki 3 Ayllu Masikunawan",
+      "desc": "Qanmi umalliq astronautata purichinki Marte allpata tupaspa. 3 ayllu masikunaqa (Kamayuq, Hamawt'a, Hampiq) wasi hawapi llamk'anku yanapasunkutaq."
+    },
+    "step3": {
+      "title": "3 Tatki: Chiqaq Llamk'aykuna",
+      "desc": "Uraypi TARPUY, HATARICHIY utaq MASKHAY botonta ñit'iy. Astronautaykiqa chay llamk'ana wasikaman purinqa makinkunawantaq chiqaqta llamk'anqa."
+    },
+    "step4": {
+      "title": "4 Tatki: P'unchawta Ñawpaqman Purichiy",
+      "desc": "P'unchaw llamk'ayta tukuspaqa Qatiq P'unchaw botonta ñit'iy. Allpa wayra utaq pantay hamuqtinqa aylluykiwan kuska allichay."
+    }
+  },
+  "taskProgress": {
+    "moving": "Llamk'ana wasiman purishan...",
+    "working": "Aylluwan kuska llamk'ashan...",
+    "done": "¡Llamk'ay allin tukusqa!",
+    "pcControlsHint": "Marte allpata ñit'iy utaq WASD nisqawan puriy"
+  },
+  "roles": {
+    "screenTitle": "RUWAYNIKITA AKLLAY",
+    "screenSubtitle": "YACHAYNIKITA ALLINTA AKLLAY",
+    "title": "RUWAYNIKITA AKLLAY",
+    "subtitle": "YACHAYNIKITA ALLINTA AKLLAY",
+    "footer": "Yachaynikita akllay. Akllasqaykin rikuchinqa imaynatas aylluykita yanapanki Marte suyupi.",
+    "selectBtn": "AKLLAY",
+    "selectedLabel": "Akllasqa ruway:",
+    "roleSelectedLabel": "Akllasqa ruway:",
+    "startingMission": "PURIYTA QALLARISHAN...",
+    "changeRoleBtn": "RUWAYTA TIKRAY",
+    "startDay1Btn": "1 P'UNCHAWTA QALLARIY",
+    "startDay1": "1 P'UNCHAWTA QALLARIY",
+    "commander": {
+      "title": "Umalliq",
+      "desc": "Puriyta umalliy. Sasachakuy pachapi allin yuyayta akllay.",
+      "perk": "Umalliq kallpa: Sasachakuypi llapan aylluta allinta pusanki samay wayratataq waqaychanki."
+    },
+    "engineer": {
+      "title": "Kamayuq Ruraq",
+      "desc": "Llamk'anakunata allichay. Kallpata, yakuta, Inti p'anqakunatawan purichiy.",
+      "perk": "Kamayuq kallpa: Inti p'anqakunata pichaspa yaku purinata allichaspataq aswan kallpata tarinki."
+    },
+    "medic": {
+      "title": "Hampiq",
+      "desc": "Aylluq qhali kayninta qhaway Inti wach'imantataq waqaychay.",
+      "perk": "Hampiq kallpa: Inti wach'ita utqaylla pisiyachinki llapan ayllutataq qhalita waqaychanki."
+    },
+    "scientist": {
+      "title": "Hamawt'a",
+      "desc": "Marte allpata Rover antawawan t'aqwiy mikhunapaq yurakunatataq wiñachiy.",
+      "perk": "Hamawt'a kallpa: Yura wasipi yurakuna utqaylla wiñan Rover antawataq aswan yakuta tarin."
+    }
+  },
+  "hud": {
+    "day": "P'UNCHAW",
+    "act": "SUYU",
+    "oxygen": "Samay Wayra",
+    "energy": "Kallpa",
+    "food": "Mikhuy",
+    "water": "Yaku",
+    "radiation": "Inti Wach'i",
+    "signal": "Willakuy",
+    "minutes": "min",
+    "metal": "Qullqi",
+    "scrap": "Puchuq",
+    "nextDay": "Qatiq P'unchaw"
+  },
+  "khipu": {
+    "title": "KHIPU",
+    "subtitle": "Tawantinsuyu Yupana",
+    "food": "Mikhuy",
+    "energy": "Kallpa",
+    "radiation": "Wach'i",
+    "supplies": "Yaku",
+    "legend": "Sapa k'anchaq kipuqa 20% waqaychasqa kallpatan rikuchin."
+  },
+  "missions": {
+    "step1": "1 RUWAY: Ñawpaqtaqa mikhuytan munanchis. TARPUY botonta utaq Yura Wasita tupay yurakunata qarpanapaq.",
+    "step2": "2 RUWAY: ¡Allinmi! Yurakunaqa mikhuyta ch'uya wayratawan qun, ichaqa yakutan tukun. Inti P'anqakunata qhaway.",
+    "step3": "3 RUWAY: Allpata tupaspa puriy utaq MASKHAY botonta tupay Rover antawawan chullunku yakuta apamunapaq.",
+    "step4": "4 RUWAY: Samay Wayrata, Kallpata, Mikhuytaima hatunpi waqaychay 28 p'unchawkama."
+  },
+  "pins": {
+    "greenhouse": "Yura Wasi",
+    "habitat": "Hatun Wasi",
+    "solarPanels": "Inti P'anqakuna",
+    "waterRecycler": "Yaku Ch'uyanchaq",
+    "waterSystem": "Yaku Ch'uyanchaq",
+    "rover": "Rover Antawa",
+    "antenna": "Chaski Antena"
+  },
+  "npc": {
+    "socialBubble": "Ayllu Masi",
+    "greetingScientist": "¡Allinllachu! Ñuqaqa Hamawt'am kani. T'oqomanta rumikunata yura wasi yurakunatawan qhawashani.",
+    "greetingEngineer": "¡Allinllachu! Ñuqaqa Kamayuqmi kani. Inti p'anqanchiskunata puka allpamanta waqaychashani.",
+    "greetingMedic": "¡Allinllachu! Ñuqaqa Hampiqmi kani. Inti wach'i yupayta qhaway wasi ukhupitaq samariy."
+  },
+  "crew": {
+    "commander": "Puriy Umalliq",
+    "flightEngineer": "Kamayuq Ruraq",
+    "scienceOfficer": "Hamawt'a Yachaq",
+    "medicOfficer": "Hampiq Kamayuq"
+  },
+  "cultivateMenu": {
+    "title": "Yura Wasi Tarpuykuna",
+    "subtitle": "Yurakunaqa misk'i mikhuyta ch'uya samay wayratawan quwanchis",
+    "water": {
+      "title": "YURATA QARPAY",
+      "good": "+15% Mikhuy ch'uya Samay Wayrawan",
+      "bad": "-6% waqaychasqa Yakuta tukun"
+    },
+    "harvest": {
+      "title": "MIKHUYTA PALLAY",
+      "good": "+10% Mikhuy, +Samay Wayra, +10 Puchuq",
+      "bad": "-5% k'anchay Kallpata tukun"
+    },
+    "inspect": {
+      "title": "K'ANCHAYTA QHAWAY",
+      "good": "+8% Wiñay Inti wach'itataq uraykachin",
+      "bad": "-3% Kallpata tukun"
+    }
+  },
+  "buildMenu": {
+    "title": "Wasita Hatarichiy Allichaywan",
+    "subtitle": "Wasi llamk'anakunata ch'uyata allintataq waqaychay",
+    "cleanPanels": {
+      "title": "INTI P'ANQATA PICHAY",
+      "good": "+25% Ch'uya Kallpa wasipaq",
+      "bad": "-5 Puchuqta pisi Samay Wayratawan tukun"
+    },
+    "repairWater": {
+      "title": "YAKU CH'UYANCHAQTA ALLICHAY",
+      "good": "+20% Ch'uya Yaku mana ususpa",
+      "bad": "-4 Qullqita -5% Kallpatawan tukun"
+    },
+    "shieldHabitat": {
+      "title": "WASI HARK'AQTA KALLPACHAY",
+      "good": "Inti Wach'ita pisiyachin ayllutataq waqaychan",
+      "bad": "-6 Qullqita -5% Kallpatawan tukun"
+    }
+  },
+  "exploreMenu": {
+    "title": "Marte Suyuta Maskhay",
+    "subtitle": "Jezero t'oqopi Rover antawawan yakuta maskhay utaq wasipi puriy",
+    "roverIce": {
+      "title": "ROVERWAN CHULLUNKUTA MASKHAY",
+      "good": "+20% Musuq Yaku +4 Qullqiwan",
+      "bad": "-8% Rover Kallpata tukun"
+    },
+    "moxieAir": {
+      "title": "SAMAY WAYRATA RURAY",
+      "good": "+15% Ch'uya Samay Wayra",
+      "bad": "-6% Kallpata tukun"
+    },
+    "walkSolar": {
+      "title": "INTI P'ANQATA QHAWAY",
+      "good": "+12% Kallpa allpata pichaspa",
+      "bad": "Purispa pisi Samay Wayrata tukun"
+    }
+  },
+  "consequences": {
+    "title": "Akllasqaykiq Rurun",
+    "goodLabel": "Allin kaq:",
+    "badLabel": "Tukukusqan:",
+    "roleBonusLabel": "Ruwaynikiq Yanapaynin"
+  },
+  "events": {
+    "scientificFactLabel": "NASA Yachay:",
+    "scientificFactTitle": "NASA Yachay:",
+    "eventA": {
+      "title": "WILLAKUY: HATUN ALLPA WAYRA",
+      "subtitle": "Hatun puka allpa phuyu Intita pakashan Inti p'anqakunatataq qhillichashan.",
+      "fact": "Marte suyupiqa allpa wayrakunaqa unaytan Inti k'anchayta hark'an, wasiq kallpanta pisiyachispa.",
+      "opt1": {
+        "title": "KALLPATA RAKIY",
+        "desc": "Wasiq q'uñi kayninta waqaychan, ichaqa yurakuna pisi-pisimanta wiñan.",
+        "badge": "+Samay Wayra Q'uñiwan / -Yura Wiñay",
+        "feedback": "Kallpata q'uñichiqman kachanki llapan aylluta allinta waqaychaspa."
+      },
+      "opt2": {
+        "title": "P'ANQATA PICHAY",
+        "desc": "Hawaman lluqsispa Inti p'anqamanta puka allpata pichanki.",
+        "badge": "+30% Kallpa / -Pisi Samay Wayra",
+        "feedback": "Inti p'anqakunata allinta pichanki. Wasiq kallpanqa yapakurqanmi."
+      },
+      "opt3": {
+        "title": "WASIPI SUYAY",
+        "desc": "Llapan ayllu wasi ukhupi suyan hatun wayra ripunankama.",
+        "badge": "Ayllu Waqaychasqa / -10% Kallpa",
+        "feedback": "Llapan ayllu wasi ukhupi qhalilla suyarqan allpa wayra ripunankama."
+      }
+    },
+    "eventB": {
+      "title": "WILLAKUY: YAKU CH'UYANCHAQ PANTAY",
+      "subtitle": "Puka k'anchay willashan ch'uya yaku usushasqanmanta.",
+      "fact": "Hanaq pachapiqa llapan yakutan ch'uyanchaspa kutichinku mana yaku tukukunanpaq.",
+      "opt1": {
+        "title": "KUNAN ALLICHAY",
+        "desc": "Qullqiwan yaku purinata wichq'ay ch'uya yakuta kutichinapaq.",
+        "badge": "+20% Yaku / -Qullqi Kallpawan",
+        "feedback": "Yaku ch'uyanchaqta allichanki puka k'anchaytataq wañuchinki."
+      },
+      "opt2": {
+        "title": "YAKU WAQAYCHAY",
+        "desc": "Usuyta sayachin mana kallpata tukuspa, ichaqa yurakuna pisi yakuta chaskin.",
+        "badge": "0% Kallpa / -Yura Wiñay",
+        "feedback": "Yaku waqaychayta qallarichinki mana kallpata tukuspa."
+      },
+      "opt3": {
+        "title": "ROVERWAN CHULLUNKUTA APAMUY",
+        "desc": "Rover antawaqa t'oqomanta chullunku yakuta apamun.",
+        "badge": "+25% Yaku / -10% Kallpa",
+        "feedback": "Rover antawaqa Jezero t'oqomanta chullunku yakuta apamurqan."
+      }
+    },
+    "eventC": {
+      "title": "WILLAKUY: INTI RAWRAY WACH'I",
+      "subtitle": "Intimanta sinchi wach'ikuna Marte suyuman chayamushan.",
+      "fact": "Marte wayra pacha llapsa kasqanraykun Inti rawray kaqtinqa pakakuy wasiman haykuna.",
+      "opt1": {
+        "title": "PAKAKUYMAN HAYKUY",
+        "desc": "Wasi hark'aqta kallpachay Inti wach'ita uraykachinapaq.",
+        "badge": "-Wach'i / Ayllu 100% Waqaychasqa",
+        "feedback": "Llapan ayllu pakakuy wasiman haykurqan. Inti wach'iqa pisiyarqanmi."
+      },
+      "opt2": {
+        "title": "PURIYTA SAYACHIY",
+        "desc": "Kunan p'unchaw mana pipas hawaman lluqsinchu samay wayrata waqaychaspa.",
+        "badge": "+10% Samay Wayra Kallpawan",
+        "feedback": "Hawa puriykunata sayachinki samay wayrata ayllutawan waqaychaspa."
+      },
+      "opt3": {
+        "title": "LLAMK'ASHALLAY",
+        "desc": "Hawapi aswan kallpata tarinki, ichaqa Inti wach'i yapakun.",
+        "badge": "+20% Kallpa / +Wach'i",
+        "feedback": "Aswan kallpata tarinki, ichaqa aylluq Inti wach'in yapakurqan."
+      }
+    },
+    "eventD": {
+      "title": "WILLAKUY: PICHAQ MUYUQ WAYRA",
+      "subtitle": "Huk muyuq wayra wasinchis qayllata purishan.",
+      "fact": "Perseverance antawaqa uyarirqanmi Marte muyuq wayrata; chay wayran Inti p'anqamanta allpata pichan.",
+      "opt1": {
+        "title": "WAYRATA CHASKIY",
+        "desc": "Inti p'anqakunata muyuchiy wayra allpata pichananpaq.",
+        "badge": "+25% Kallpa",
+        "feedback": "Marte wayran Inti p'anqamanta allpata picharqan kallpata yapaspa."
+      },
+      "opt2": {
+        "title": "ROVERWAN T'AQWIY",
+        "desc": "Muyuq wayrata t'aqwiy chay kallpawantaq yura wasita wiñachiy.",
+        "badge": "+15% Mikhuy +Samay Wayrawan",
+        "feedback": "Muyuq wayrata t'aqwinki yurakunataq aswan utqaylla wiñarqan."
+      },
+      "opt3": {
+        "title": "YAKUTA WAQAYCHAY",
+        "desc": "Yura wasi punkukunata wichq'ay yakuta waqaychanapaq.",
+        "badge": "+10% Yaku / -2% Kallpa",
+        "feedback": "Yura wasiq yakunta allinta waqaychanki."
+      }
+    }
+  },
+  "navigation": {
+    "tapGroundHint": "Allpata tupay utaq wach'ikunata ñit'iy",
+    "walkToBase": "Wasiman Riy",
+    "walkToPanels": "P'anqaman Riy"
+  },
+  "actions": {
+    "explore": "MASKHAY",
+    "build": "HATARICHIY",
+    "cultivate": "TARPUY",
+    "spaceWeather": "Hanaq Pacha",
+    "checkBase": "Wasita Qhaway"
+  },
+  "guide": {
+    "title": "Utqaylla Pukllana Yanapay",
+    "touchRotate": "Kamarata muyuchiy: 1 ruk'anawan utaq ratón nisqawan aysay.",
+    "touchZoom": "Sispay utaq karunchay: 2 ruk'anawan k'ichkiy utaq ratón muyuwan.",
+    "touchTap": "Purichiy: Marte allpata tupay utaq wach'ikunata ñit'iy purinapaq aylluykitataq napaykunapaq.",
+    "close": "CHASKISQA"
+  },
+  "targets": {
+    "tamboAlfa": {
+      "title": "Hatun Wasi Yura Wasiwan",
+      "subtitle": "Kaypin ayllu kawsan, yurakuna wiñan, llapan llaqtataq kamachikun."
+    },
+    "solarEast": {
+      "title": "Anti Inti P'anqakuna",
+      "subtitle": "Inti k'anchayta hap'in llapan wasiman kallpata qunapaq."
+    },
+    "solarWest": {
+      "title": "Kunti Inti P'anqakuna",
+      "subtitle": "Sapa p'unchaw kallpa waqaychaqta hunt'achin."
+    },
+    "marsRover": {
+      "title": "Perseverance Maskhaq Antawa",
+      "subtitle": "Jezero t'oqopi chullunku yakuta qullqitawan maskhan."
+    },
+    "waterRecycler": {
+      "title": "Yaku Ch'uyanchaq",
+      "subtitle": "Yakuta ch'uyanchan mana hayk'aqpas pisiyananpaq."
+    },
+    "medaStation": {
+      "title": "Marte Wayra Qhawaq",
+      "subtitle": "Wayrata, chirita, allpa phuyutawan tupun."
+    },
+    "scienceNode1": {
+      "title": "Jezero T'oqo Chawpi",
+      "subtitle": "Ñawpaq qucha rumi ukhupi chullunku yakuyuq."
+    },
+    "scienceNode2": {
+      "title": "Ñawpaq Mayu Pampa",
+      "subtitle": "Qhapaq rumikuna t'aqwinapaq."
+    },
+    "scienceNode3": {
+      "title": "Neretva Mayu Purina",
+      "subtitle": "Rover antawawan purinapaq allin pampa."
+    },
+    "scienceNode4": {
+      "title": "Chinchay Muqu",
+      "subtitle": "Hatun muqu allpa wayrata karumanta rikunapaq."
+    }
+  },
+  "endScreens": {
+    "youWin": "¡ATIPANKI!",
+    "winSubtitle": "¡MARTE SUYUPI PURIY HUNT'ASQA!",
+    "winSummary": "¡28 p'unchawta Marte suyupi kawsanki, yura wasita uywanki, llapan ayllutataq qhalita waqaychanki!",
+    "gameOver": "PUKLLAY TUKUKUN",
+    "loseSubtitle": "LLAQTAQA HUKMANTA QALLARIYTAN MUNAN",
+    "loseHint": "Samay Wayrata, Kallpata, Yakutawan qhaway, sasachakuypitaq Ruwaynikiq kallpanta apaykachay.",
+    "startOver": "HUKMANTA PUKLLAY"
+  },
+  "simulation": {
+    "defeat": {
+      "water": "Yaku tukukapun. Yaku ch'uyanchaqta allichay Rover antawataq chullunkuman kachay.",
+      "oxygen": "Samay wayra tukukapun. Yura wasipi yurakunata qarpay ch'uya wayra kananpaq.",
+      "energy": "Kallpa tukukapun. Inti p'anqamanta puka allpata pichay.",
+      "radiation": "Inti wach'i nishuta yapakupun. Inti rawray kaqtinqa pakakuy wasiman haykuy."
+    }
+  }
+}

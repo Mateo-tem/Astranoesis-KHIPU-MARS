@@ -1,0 +1,29 @@
+{
+  "name": "khipu-mars",
+  "private": true,
+  "version": "1.0.0",
+  "description": "KHIPU MARS — Interactive 3D Mars Survival & Science Simulation (NASA Space Apps Challenge 2026)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "i18next": "^23.16.4",
+    "lucide": "^0.460.0",
+    "lucide-react": "^0.460.0",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.170.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  },
+  "author": "ASTRANOESIS (NASA Space Apps Challenge 2026)",
+  "license": "MIT"
+}

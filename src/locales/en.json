@@ -1,0 +1,404 @@
+{
+  "app": {
+    "title": "KHIPU MARS",
+    "subtitle": "Mars Colony Survival Adventure",
+    "loading": "Loading 3D Martian Base...",
+    "missionDuration": "28-Day Mars Mission"
+  },
+  "loading": {
+    "title": "PREPARING 3D PLANET MARS...",
+    "subtitle": "Loading space models..."
+  },
+  "splash": {
+    "title": "KHIPU MARS",
+    "subtitle": "28-DAY MISSION ON MARS",
+    "start": "START",
+    "chooseLanguage": "Game Language"
+  },
+  "welcome": {
+    "title": "¡WELCOME!",
+    "headline": "¡WELCOME!",
+    "message": "YOU ARE IN CHARGE OF THE FIRST BASE ON MARS. YOU HAVE 28 DAYS TO BUILD THE COLONY AND KEEP YOUR CREW ALIVE. DO YOU ACCEPT THE MISSION?",
+    "story": "YOU ARE IN CHARGE OF THE FIRST BASE ON MARS. YOU HAVE 28 DAYS TO BUILD THE COLONY AND KEEP YOUR CREW ALIVE. DO YOU ACCEPT THE MISSION?",
+    "hint": "Choose your role, take care of oxygen, water, food, and energy, and guide your teammates across 28 Martian days.",
+    "back": "BACK",
+    "next": "NEXT"
+  },
+  "intro": {
+    "skip": "Skip Intro",
+    "nextScene": "Next Scene",
+    "prevScene": "Previous Scene",
+    "chooseRoleBtn": "CHOOSE YOUR MISSION ROLE",
+    "audioOn": "Space Audio: On",
+    "audioOff": "Space Audio: Muted",
+    "scene1": {
+      "tag": "SCENE 1 OF 4: LAUNCH OF THE FUTURE",
+      "title": "MARS-EF03 Habitat in Jezero Crater",
+      "text": "Year 2038. CHAPEA-3 Mission. Four astronauts land on Mars with one goal: prove humans can survive 500 sols on the Red Planet."
+    },
+    "scene2": {
+      "tag": "SCENE 2 OF 4: THE INCIDENT",
+      "title": "Red Alert on the Cargo Module",
+      "text": "Landing alert! A sudden dust storm damages the cargo pod, scattering vital supplies. The crew rushes inside the habitat."
+    },
+    "scene3": {
+      "tag": "SCENE 3 OF 4: THE COUNTDOWN (NASA-ESA LINK)",
+      "title": "Orbiting ESA Supply Capsule",
+      "text": "Earth hears you, but help is far away. An orbiting ESA supply capsule will reach your base in 28 sols."
+    },
+    "scene4": {
+      "tag": "SCENE 4 OF 4: YOUR MISSION",
+      "title": "Khipu Mission Ledger Online",
+      "text": "Every choice counts. Use the Khipu to balance power, water, crops, and radiation. Your challenge: survive all 28 sols."
+    }
+  },
+  "tutorial": {
+    "badge": "SIMULATION TUTORIAL",
+    "skip": "Skip Tutorial",
+    "next": "Next Step",
+    "finish": "Start Simulation!",
+    "step1": {
+      "title": "Step 1: Your 4 Vital Bars and the Khipu",
+      "desc": "At the top you see Oxygen, Energy, Food, and Water, and on the right the Inca Khipu. If any resource hits 0% or Radiation reaches 100%, the mission fails. Survive until Sol 28."
+    },
+    "step2": {
+      "title": "Step 2: Your Astronaut and 3 Specialists",
+      "desc": "You control the main astronaut by tapping the Martian ground. Your 3 teammates (Engineer, Scientist, and Medic) work at exterior stations and join you when you perform tasks."
+    },
+    "step3": {
+      "title": "Step 3: Real Physical Colony Tasks",
+      "desc": "Click CULTIVATE, BUILD, or EXPLORE below (or click any 3D building). Your astronaut will physically walk to the station and perform the job in real time before resources update."
+    },
+    "step4": {
+      "title": "Step 4: Advance Sols and Overcome Storms",
+      "desc": "After completing your daily tasks, click the orange Next Day button at the top right. When a dust storm or leak alerts the base, choose how your crew resolves it."
+    }
+  },
+  "taskProgress": {
+    "moving": "Walking to the station...",
+    "working": "Performing task at the station with the crew...",
+    "done": "Task completed!",
+    "pcControlsHint": "Click on the Martian ground or use WASD to walk your astronaut"
+  },
+  "roles": {
+    "screenTitle": "CHOOSE YOUR ROLE",
+    "screenSubtitle": "SELECT SPECIALIZED CAREFULLY",
+    "title": "CHOOSE YOUR ROLE",
+    "subtitle": "SELECT SPECIALIZED CAREFULLY",
+    "footer": "Choose your specialty. Your role will determine how you help the crew survive on Mars.",
+    "selectBtn": "SELECT",
+    "selectedLabel": "Role selected:",
+    "roleSelectedLabel": "Role selected:",
+    "startingMission": "STARTING MISSION...",
+    "changeRoleBtn": "CHANGE ROLE",
+    "startDay1Btn": "START DAY 1",
+    "startDay1": "START DAY 1",
+    "commander": {
+      "title": "Commander",
+      "desc": "Lead the mission. Make final decisions when danger hits the colony.",
+      "perk": "Commander Perk: You save extra oxygen and energy when guiding the crew in emergencies."
+    },
+    "engineer": {
+      "title": "Engineer",
+      "desc": "Fix machines. Keep electricity, water pipes, and solar panels running.",
+      "perk": "Engineer Perk: You use less scrap and gain bonus power when cleaning solar panels or fixing pipes."
+    },
+    "medic": {
+      "title": "Medic",
+      "desc": "Care for the astronauts' health and shield them from solar radiation storms.",
+      "perk": "Medic Perk: You reduce radiation much faster and keep the whole crew strong and healthy."
+    },
+    "scientist": {
+      "title": "Scientist",
+      "desc": "Research Martian soil with the Rover and grow fresh food in the greenhouse.",
+      "perk": "Scientist Perk: Your greenhouse crops grow faster and the Rover finds more water and metal."
+    }
+  },
+  "hud": {
+    "day": "DAY",
+    "act": "ACT",
+    "oxygen": "Oxygen",
+    "energy": "Energy",
+    "food": "Food",
+    "water": "Water",
+    "radiation": "Radiation",
+    "signal": "Signal",
+    "minutes": "min",
+    "metal": "Metal",
+    "scrap": "Scrap",
+    "nextDay": "Next Day"
+  },
+  "khipu": {
+    "title": "KHIPU",
+    "subtitle": "Andean Space Tracker",
+    "food": "Food",
+    "energy": "Energy",
+    "radiation": "Alert",
+    "supplies": "Water",
+    "legend": "Each glowing knot represents 20% of your colony reserves."
+  },
+  "missions": {
+    "step1": "MISSION 1: First, we need food. Click the CULTIVATE button or the Greenhouse pin to water the plants.",
+    "step2": "MISSION 2: Well done! The plants grow food and clean air, but use water. Check the Solar Panels or Water Recycler.",
+    "step3": "MISSION 3: Walk your astronaut by tapping the ground or use EXPLORE to send the Rover for ice water.",
+    "step4": "MISSION 4: Keep Oxygen, Energy, and Food high until Day 28. When an alert appears, protect your crew!"
+  },
+  "pins": {
+    "greenhouse": "Greenhouse",
+    "habitat": "Habitat",
+    "solarPanels": "Solar Panels",
+    "waterRecycler": "Water Recycler",
+    "waterSystem": "Water Recycler",
+    "rover": "Explorer Rover",
+    "antenna": "Signal Dish"
+  },
+  "npc": {
+    "socialBubble": "Colony Teammate",
+    "greetingScientist": "Hi there! I am the Scientist. I am checking crater rock samples and tending our greenhouse plants.",
+    "greetingEngineer": "Hello! I am the Engineer. I am making sure red Martian dust does not block our solar panels.",
+    "greetingMedic": "Hi! I am the Medic. Remember to watch the radiation bar and keep the crew rested inside."
+  },
+  "crew": {
+    "commander": "Mission Commander",
+    "flightEngineer": "Flight Engineer",
+    "scienceOfficer": "Science Officer",
+    "medicOfficer": "Medical Officer"
+  },
+  "cultivateMenu": {
+    "title": "Space Greenhouse Crops",
+    "subtitle": "Plants give us fresh food and clean oxygen to breathe",
+    "water": {
+      "title": "WATER CROPS",
+      "good": "+15% Food and +Fresh Oxygen",
+      "bad": "Uses -6% stored Water"
+    },
+    "harvest": {
+      "title": "HARVEST",
+      "good": "+10% Food, +Oxygen and +10 Scrap",
+      "bad": "Uses -5% grow light Energy"
+    },
+    "inspect": {
+      "title": "INSPECT LIGHTS",
+      "good": "+8% Crop Growth and lowers radiation",
+      "bad": "Uses -3% Energy"
+    }
+  },
+  "buildMenu": {
+    "title": "Build and Repair Colony",
+    "subtitle": "Keep the base machines clean, sealed, and running safely",
+    "cleanPanels": {
+      "title": "CLEAN SOLAR PANELS",
+      "good": "+25% Clean Electrical Energy",
+      "bad": "Uses -5 Scrap and a bit of Oxygen"
+    },
+    "repairWater": {
+      "title": "UPGRADE RECYCLER",
+      "good": "+20% Clean Water with zero leaks",
+      "bad": "Uses -4 Metal and -5% Energy"
+    },
+    "shieldHabitat": {
+      "title": "BOOST HABITAT SHIELD",
+      "good": "Lowers Radiation and protects crew",
+      "bad": "Uses -6 Metal and -5% Energy"
+    }
+  },
+  "exploreMenu": {
+    "title": "Explore Planet Mars",
+    "subtitle": "Search Jezero Crater with the Rover or walk to exterior stations",
+    "roverIce": {
+      "title": "SEND ROVER FOR ICE",
+      "good": "+20% Fresh Water and +4 Metal",
+      "bad": "Uses -8% Battery Energy"
+    },
+    "moxieAir": {
+      "title": "MAKE OXYGEN",
+      "good": "+15% Clean Oxygen from Martian air",
+      "bad": "Uses -6% Energy"
+    },
+    "walkSolar": {
+      "title": "CHECK SOLAR PANELS",
+      "good": "+12% Energy by brushing off dust",
+      "bad": "Uses a little Oxygen while walking"
+    }
+  },
+  "consequences": {
+    "title": "Decision Result",
+    "goodLabel": "Good effect:",
+    "badLabel": "Cost:",
+    "roleBonusLabel": "Your Role Bonus"
+  },
+  "events": {
+    "scientificFactLabel": "Scientific Fact:",
+    "scientificFactTitle": "Scientific Fact:",
+    "eventA": {
+      "title": "ALERT: DUST STORM",
+      "subtitle": "A giant red dust cloud blocks the Sun and covers the solar panels.",
+      "fact": "On Mars, dust storms can last for weeks and block sunlight, affecting power generation.",
+      "opt1": {
+        "title": "DIVERT ENERGY",
+        "desc": "Protects base air and heat, but greenhouse plants grow slower today.",
+        "badge": "+Oxygen and Heat / -Crop Speed",
+        "feedback": "You diverted electricity to keep the habitat warm and the crew safe."
+      },
+      "opt2": {
+        "title": "CLEAN PANELS",
+        "desc": "Go outside to sweep red dust off the solar panels and restore power.",
+        "badge": "+30% Energy / -Some Oxygen",
+        "feedback": "You cleaned the solar panels! Colony power generation jumped back up."
+      },
+      "opt3": {
+        "title": "WAIT INSIDE",
+        "desc": "Everyone waits safely inside the habitat until the high winds pass.",
+        "badge": "Crew Safe / -10% Energy",
+        "feedback": "The crew waited safely inside the base until the dust storm passed."
+      }
+    },
+    "eventB": {
+      "title": "ALERT: WATER RECYCLER LEAK",
+      "subtitle": "The red alarm beacon is blinking because a pipe is losing clean water.",
+      "fact": "In space, astronauts recycle almost every drop of water so the colony never runs dry.",
+      "opt1": {
+        "title": "REPAIR NOW",
+        "desc": "Seal the pipe with metal to recover all clean water.",
+        "badge": "+20% Water / -Metal and Energy",
+        "feedback": "You repaired the water recycler and turned off the red alarm beacon."
+      },
+      "opt2": {
+        "title": "SAVE WATER MODE",
+        "desc": "Stops the leak with zero energy cost, but plants get less water today.",
+        "badge": "0% Energy Cost / -Crop Speed",
+        "feedback": "You switched to water-saving mode and stopped the leak without spending power."
+      },
+      "opt3": {
+        "title": "ROVER ICE SEARCH",
+        "desc": "Send the Rover to the crater to bring fresh water ice.",
+        "badge": "+25% Water / -10% Energy",
+        "feedback": "The Rover returned from Jezero Crater with fresh water ice for the tanks."
+      }
+    },
+    "eventC": {
+      "title": "ALERT: SOLAR STORM",
+      "subtitle": "The Sun launched a wave of invisible radiation toward Mars.",
+      "fact": "Because Mars has a thin atmosphere, astronauts must shelter inside when solar storms hit.",
+      "opt1": {
+        "title": "ENTER SHELTER",
+        "desc": "Activate maximum habitat shielding to bring radiation down.",
+        "badge": "-Radiation / Crew 100% Safe",
+        "feedback": "The whole crew entered the shielded shelter. Radiation dropped to safe levels."
+      },
+      "opt2": {
+        "title": "PAUSE WALKS",
+        "desc": "Nobody goes outside today to save oxygen and stay safe.",
+        "badge": "+10% Oxygen and Energy",
+        "feedback": "Outdoor walks were paused in time, saving oxygen and protecting the team."
+      },
+      "opt3": {
+        "title": "KEEP WORKING",
+        "desc": "Generates extra power outside, but increases radiation danger.",
+        "badge": "+20% Energy / +Radiation Risk",
+        "feedback": "You generated extra electricity, but the crew's radiation level rose."
+      }
+    },
+    "eventD": {
+      "title": "NOTICE: CLEANING WHIRLWIND",
+      "subtitle": "A Martian dust devil whirlwind is passing near the base.",
+      "fact": "Perseverance's microphone recorded Martian whirlwinds that can sweep dust off solar panels.",
+      "opt1": {
+        "title": "USE THE WIND",
+        "desc": "Angle the solar panels so the wind sweeps the dust off for free.",
+        "badge": "+25% Free Energy",
+        "feedback": "The Martian wind swept the dust off the solar panels and boosted energy!"
+      },
+      "opt2": {
+        "title": "STUDY WITH ROVER",
+        "desc": "Study the whirlwind and use the bonus energy to boost the greenhouse.",
+        "badge": "+15% Food and +Oxygen",
+        "feedback": "You studied the whirlwind and helped the greenhouse plants grow faster!"
+      },
+      "opt3": {
+        "title": "SAVE MOISTURE",
+        "desc": "Close the greenhouse vents to trap extra clean water.",
+        "badge": "+10% Water / -2% Energy",
+        "feedback": "You sealed the greenhouse moisture vents and saved extra water."
+      }
+    }
+  },
+  "navigation": {
+    "tapGroundHint": "Tap ground or use arrows",
+    "walkToBase": "Walk to Base",
+    "walkToPanels": "Walk to Panels"
+  },
+  "actions": {
+    "explore": "EXPLORE",
+    "build": "BUILD",
+    "cultivate": "CULTIVATE",
+    "spaceWeather": "Space Weather",
+    "checkBase": "Check Base"
+  },
+  "guide": {
+    "title": "Quick Mission Guide",
+    "touchRotate": "Rotate camera: Drag with 1 finger or left mouse button.",
+    "touchZoom": "Zoom in or out: Pinch with 2 fingers or scroll the mouse wheel.",
+    "touchTap": "Move astronaut: Tap anywhere on the Martian ground or use the arrows to walk and greet your teammates.",
+    "close": "GOT IT"
+  },
+  "targets": {
+    "tamboAlfa": {
+      "title": "Central Habitat and Greenhouse",
+      "subtitle": "Where the astronauts live, grow plants, and control the colony."
+    },
+    "solarEast": {
+      "title": "East Solar Panels",
+      "subtitle": "Capture sunlight to provide electricity for the entire base."
+    },
+    "solarWest": {
+      "title": "West Solar Panels",
+      "subtitle": "Help charge the colony batteries during the Martian day."
+    },
+    "marsRover": {
+      "title": "Perseverance Explorer Rover",
+      "subtitle": "Travels across Jezero Crater to find water ice and minerals."
+    },
+    "waterRecycler": {
+      "title": "Water Recycler",
+      "subtitle": "Cleans and reuses water so the colony never runs out."
+    },
+    "medaStation": {
+      "title": "Mars Weather Station",
+      "subtitle": "Measures wind speed, cold temperatures, and dust in the sky."
+    },
+    "scienceNode1": {
+      "title": "Jezero Crater Center",
+      "subtitle": "Ancient Martian lakebed with water ice beneath the rocks."
+    },
+    "scienceNode2": {
+      "title": "Ancient River Delta",
+      "subtitle": "Rocks rich in minerals and Martian history."
+    },
+    "scienceNode3": {
+      "title": "Neretva River Channel",
+      "subtitle": "Great location to explore with the Rover."
+    },
+    "scienceNode4": {
+      "title": "North Overlook Hill",
+      "subtitle": "High point for spotting approaching dust storms."
+    }
+  },
+  "endScreens": {
+    "youWin": "YOU WIN",
+    "winSubtitle": "MARS MISSION ACCOMPLISHED!",
+    "winSummary": "You survived all 28 days on Mars, tended the greenhouse, and kept your entire crew safe and healthy!",
+    "gameOver": "GAME OVER",
+    "loseSubtitle": "THE COLONY NEEDS ANOTHER TRY",
+    "loseHint": "Always watch your Oxygen, Energy, and Water bars, and use your Role perk during storms.",
+    "startOver": "START OVER"
+  },
+  "simulation": {
+    "defeat": {
+      "water": "The base ran out of water. Remember to fix the recycler and send the Rover for ice.",
+      "oxygen": "Oxygen ran out. Take care of the greenhouse plants to produce fresh air.",
+      "energy": "Batteries ran out of power. Remember to clean dust off the solar panels.",
+      "radiation": "Radiation rose too high. Use the habitat shelter during solar storms."
+    }
+  }
+}
