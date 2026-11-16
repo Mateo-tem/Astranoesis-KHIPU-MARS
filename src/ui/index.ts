@@ -218,6 +218,7 @@ export class UIManager implements MissionHudController {
   private loadingPercent = 0;
   private loadingLabel = '';
   private selectedRole: PlayerSpecialtyRole = 'SCIENTIST';
+  private isRoleRandomlyAssigned = false;
   private activeBottomMenu: BottomDrawerMenu = 'NONE';
   private activeContextualMenu: ContextualSpecialistMenu | null = null;
   private isMobileKhipuOpen = false;
@@ -399,6 +400,33 @@ export class UIManager implements MissionHudController {
       default:
         return t('roles.scientist.perk');
     }
+  }
+
+  private getRoleDescription(role: PlayerSpecialtyRole): string {
+    switch (role) {
+      case 'COMMANDER':
+        return t('roles.commander.desc');
+      case 'ENGINEER':
+        return t('roles.engineer.desc');
+      case 'MEDIC':
+        return t('roles.medic.desc');
+      case 'SCIENTIST':
+      default:
+        return t('roles.scientist.desc');
+    }
+  }
+
+  private assignRandomRole(): void {
+    const allRoles: PlayerSpecialtyRole[] = ['COMMANDER', 'ENGINEER', 'MEDIC', 'SCIENTIST'];
+    const randomIndex = Math.floor(Math.random() * allRoles.length);
+    const randomRole = allRoles[randomIndex];
+    this.selectedRole = randomRole;
+    this.isRoleRandomlyAssigned = true;
+    this.resourceEngine.updateModifiers({ playerRole: randomRole });
+    this.sceneManager.setPlayerRoleBadge(randomRole);
+    this.spaceAudio.playTaskCompleteChime();
+    this.screenState = 'ROLE_CONFIRM';
+    this.renderHUD();
   }
 
   private getRoleIllustration(role: PlayerSpecialtyRole): string {
@@ -792,7 +820,7 @@ export class UIManager implements MissionHudController {
   }
 
   /**
-   * PANTALLA 3: SELECCIÓN DE ROL (Página 5 del PDF Astranoesis Interface)
+   * PANTALLA 3: SELECCIÓN DE ROL (Página 5 del PDF Astranoesis Interface + Opción de Rol Aleatorio)
    */
   private renderRoleSelectScreen(): string {
     const roles: { id: PlayerSpecialtyRole; key: 'commander' | 'engineer' | 'medic' | 'scientist'; borderGlow: string }[] = [
@@ -818,13 +846,13 @@ export class UIManager implements MissionHudController {
           </p>
         </div>
 
-        <div class="relative z-10 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-auto py-2">
+        <div class="relative z-10 w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 my-auto py-2">
           ${roles
             .map(
               (r) => `
               <div class="flex flex-col justify-between rounded-2xl bg-gradient-to-b from-[#2b1d12]/95 via-[#1f150e]/95 to-[#140d08]/95 border-2 border-amber-500/50 ${r.borderGlow} p-4 shadow-[0_8px_30px_rgba(0,0,0,0.8)] transition-all hover:-translate-y-1">
                 <div>
-                  <div class="w-full h-44 rounded-xl bg-gradient-to-b from-amber-500/20 via-orange-950/40 to-slate-950/90 border border-amber-500/30 flex items-center justify-center p-3 mb-3 overflow-hidden">
+                  <div class="w-full h-40 rounded-xl bg-gradient-to-b from-amber-500/20 via-orange-950/40 to-slate-950/90 border border-amber-500/30 flex items-center justify-center p-3 mb-3 overflow-hidden">
                     ${this.getRoleIllustration(r.id)}
                   </div>
 
@@ -855,9 +883,42 @@ export class UIManager implements MissionHudController {
             `
             )
             .join('')}
+
+          <!-- 5ta Tarjeta: Opción de ROL ALEATORIO -->
+          <div class="sm:col-span-2 lg:col-span-1 flex flex-col justify-between rounded-2xl bg-gradient-to-b from-[#1e1b4b]/95 via-[#172554]/95 to-[#0f172a]/95 border-2 border-cyan-400/70 hover:border-amber-300 p-4 shadow-[0_8px_35px_rgba(56,189,248,0.3)] transition-all hover:-translate-y-1">
+            <div>
+              <div class="w-full h-40 rounded-xl bg-gradient-to-b from-cyan-500/25 via-indigo-950/50 to-slate-950/90 border border-cyan-400/40 flex items-center justify-center p-3 mb-3 overflow-hidden">
+                ${GAME_ICONS.roleRandom}
+              </div>
+
+              <h3 class="text-lg sm:text-xl font-black uppercase tracking-wider text-center text-cyan-200 mb-2">
+                ${t('roles.random.title')}
+              </h3>
+
+              <p class="text-xs sm:text-sm text-cyan-100/90 text-center leading-relaxed mb-3">
+                ${t('roles.random.desc')}
+              </p>
+            </div>
+
+            <div>
+              <div class="rounded-xl bg-cyan-500/15 border border-cyan-400/40 px-3 py-2 mb-3 text-center">
+                <span class="block text-[11px] font-extrabold uppercase tracking-wider text-cyan-200">
+                  ${t('roles.random.perk')}
+                </span>
+              </div>
+
+              <button
+                data-random-role="true"
+                class="w-full min-h-[48px] py-2.5 px-3 rounded-xl bg-gradient-to-b from-cyan-300 via-sky-500 to-blue-700 hover:from-cyan-200 hover:to-sky-400 text-slate-950 font-black text-sm sm:text-base uppercase tracking-wider border border-cyan-100 shadow-[0_0_20px_rgba(56,189,248,0.55)] active:scale-95 transition-all flex items-center justify-center gap-2"
+              >
+                <span>${GAME_ICONS.dice}</span>
+                <span>${t('roles.random.btn')}</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="relative z-10 w-full max-w-6xl flex justify-start pt-2">
+        <div class="relative z-10 w-full max-w-7xl flex flex-wrap items-center justify-between gap-3 pt-2">
           <button
             id="btn-roles-back"
             class="min-h-[46px] px-5 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-amber-200 font-bold text-xs uppercase tracking-widest border border-amber-500/40 flex items-center gap-2"
@@ -865,50 +926,97 @@ export class UIManager implements MissionHudController {
             <span>${GAME_ICONS.chevronLeft}</span>
             <span>${t('welcome.back')}</span>
           </button>
+
+          <button
+            data-random-role="true"
+            class="min-h-[46px] px-6 py-2 rounded-xl bg-cyan-950/90 hover:bg-cyan-900 text-cyan-200 font-extrabold text-xs sm:text-sm uppercase tracking-widest border border-cyan-400/60 shadow-[0_0_18px_rgba(56,189,248,0.3)] flex items-center gap-2 active:scale-95 transition-all"
+          >
+            <span>${GAME_ICONS.dice}</span>
+            <span>${t('roles.random.btn')}</span>
+          </button>
         </div>
       </div>
     `;
   }
 
   /**
-   * PANTALLA 4: CONFIRMACIÓN DE ROL Y DESPEGUE (Página 6 del PDF Astranoesis Interface)
+   * PANTALLA 4: CONFIRMACIÓN DE ROL Y CARTEL "ROL ASIGNADO: X" (Página 6 del PDF Astranoesis Interface)
    */
   private renderRoleConfirmScreen(): string {
     const roleTitle = this.getRoleTitle(this.selectedRole);
+    const roleDesc = this.getRoleDescription(this.selectedRole);
     const rolePerk = this.getRolePerk(this.selectedRole);
 
     return `
-      <div class="pointer-events-auto fixed inset-0 z-50 flex flex-col justify-between items-center bg-slate-950/65 backdrop-blur-sm select-none p-6 sm:p-10">
-        <div class="relative z-10 mt-2 px-8 py-3 rounded-xl bg-[#2b1d12]/95 border-2 border-amber-400/70 shadow-[0_0_25px_rgba(245,158,11,0.35)] text-center">
-          <span class="text-sm sm:text-lg font-extrabold text-amber-100 tracking-wide">
-            ${t('roles.selectedLabel')} <strong class="text-amber-300 uppercase">${roleTitle}</strong>
-          </span>
+      <div class="pointer-events-auto fixed inset-0 z-50 flex flex-col justify-between items-center bg-slate-950/75 backdrop-blur-md select-none p-6 sm:p-10 overflow-y-auto">
+        <!-- Cartel superior destacado: "Rol asignado: X" -->
+        <div class="relative z-10 mt-2 px-8 py-3.5 rounded-2xl bg-[#2b1d12]/95 border-2 border-amber-400 shadow-[0_0_35px_rgba(245,158,11,0.5)] text-center">
+          <div class="flex items-center justify-center gap-2.5">
+            <span class="text-amber-300">${this.isRoleRandomlyAssigned ? GAME_ICONS.dice : GAME_ICONS.userCheck}</span>
+            <span class="text-base sm:text-xl font-black text-amber-100 tracking-wider uppercase">
+              ${t('roles.assignedLabel')} <strong class="text-amber-300 underline decoration-amber-400/80 underline-offset-4">${roleTitle}</strong>
+            </span>
+          </div>
         </div>
 
-        <div class="relative z-10 w-full max-w-xl rounded-2xl bg-[#23170e]/95 border-2 border-amber-500/60 p-6 sm:p-8 shadow-[0_0_50px_rgba(0,0,0,0.85)] text-center my-auto">
-          <div class="w-28 h-28 mx-auto mb-4 rounded-2xl bg-amber-500/15 border border-amber-400/40 p-2 flex items-center justify-center">
+        <!-- Cartel central con la insignia del Rol Asignado -->
+        <div class="relative z-10 w-full max-w-xl rounded-3xl bg-[#23170e]/95 border-2 border-amber-500/70 p-6 sm:p-8 shadow-[0_0_60px_rgba(0,0,0,0.9)] text-center my-auto">
+          ${
+            this.isRoleRandomlyAssigned
+              ? `
+              <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/60 text-cyan-200 text-xs font-black uppercase tracking-widest mb-4">
+                <span>${GAME_ICONS.dice}</span>
+                <span>${t('roles.random.badge')}</span>
+              </div>
+            `
+              : ''
+          }
+
+          <div class="w-28 h-28 mx-auto mb-4 rounded-2xl bg-amber-500/15 border border-amber-400/40 p-2 flex items-center justify-center shadow-[0_0_25px_rgba(245,158,11,0.25)]">
             ${this.getRoleIllustration(this.selectedRole)}
           </div>
 
-          <div class="w-full h-7 rounded-lg bg-slate-950 border-2 border-amber-400/70 p-1 overflow-hidden mb-3">
+          <!-- Cartel principal dentro de la tarjeta -->
+          <div class="mb-4 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500/20 via-orange-500/30 to-amber-500/20 border-2 border-amber-400/80 shadow-[0_0_25px_rgba(245,158,11,0.3)]">
+            <span class="block text-xs font-extrabold uppercase tracking-[0.2em] text-amber-300 mb-0.5">
+              ${t('roles.assignedLabel')}
+            </span>
+            <h3 class="text-2xl sm:text-4xl font-black uppercase tracking-wider text-white">
+              ${roleTitle}
+            </h3>
+          </div>
+
+          <p class="text-xs sm:text-sm font-semibold text-amber-100/90 leading-relaxed mb-4">
+            ${roleDesc}
+          </p>
+
+          <div class="w-full h-6 rounded-lg bg-slate-950 border-2 border-amber-400/70 p-1 overflow-hidden mb-3">
             <div class="h-full w-full rounded bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 animate-pulse"></div>
           </div>
 
-          <p class="text-base sm:text-xl font-black uppercase tracking-[0.16em] text-amber-200 mb-2">
+          <p class="text-sm sm:text-base font-black uppercase tracking-[0.16em] text-amber-200 mb-3">
             ${t('roles.startingMission')}
           </p>
 
-          <p class="text-xs sm:text-sm font-bold text-emerald-300 bg-emerald-950/60 border border-emerald-500/40 rounded-xl px-4 py-2">
+          <p class="text-xs sm:text-sm font-bold text-emerald-300 bg-emerald-950/60 border border-emerald-500/40 rounded-xl px-4 py-2.5">
             ${rolePerk}
           </p>
         </div>
 
-        <div class="relative z-10 flex flex-wrap items-center justify-center gap-4 pb-2">
+        <div class="relative z-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 pb-2">
           <button
             id="btn-confirm-change-role"
-            class="min-h-[54px] px-6 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-amber-200 font-extrabold text-sm uppercase tracking-wider border-2 border-amber-500/40 active:scale-95 transition-all"
+            class="min-h-[54px] px-6 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-amber-200 font-extrabold text-xs sm:text-sm uppercase tracking-wider border-2 border-amber-500/40 active:scale-95 transition-all"
           >
             ${t('roles.changeRoleBtn')}
+          </button>
+
+          <button
+            data-random-role="true"
+            class="min-h-[54px] px-6 py-3 rounded-xl bg-cyan-950/90 hover:bg-cyan-900 text-cyan-200 font-extrabold text-xs sm:text-sm uppercase tracking-wider border-2 border-cyan-400/60 flex items-center gap-2 active:scale-95 transition-all"
+          >
+            <span>${GAME_ICONS.dice}</span>
+            <span>${t('roles.random.rerollBtn')}</span>
           </button>
 
           <button
@@ -2059,10 +2167,17 @@ export class UIManager implements MissionHudController {
       btn.addEventListener('click', () => {
         const role = btn.dataset.selectRole as PlayerSpecialtyRole;
         this.selectedRole = role;
+        this.isRoleRandomlyAssigned = false;
         this.resourceEngine.updateModifiers({ playerRole: role });
         this.sceneManager.setPlayerRoleBadge(role);
         this.screenState = 'ROLE_CONFIRM';
         this.renderHUD();
+      });
+    });
+
+    this.root.querySelectorAll<HTMLButtonElement>('[data-random-role]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.assignRandomRole();
       });
     });
 

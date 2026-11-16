@@ -70,7 +70,9 @@ export const GAME_ICONS = {
 
   film: `<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>`,
 
-  // Ilustraciones Vectoriales Grandes para las 4 Tarjetas de Selección de Rol (Página 5 del PDF)
+  dice: `<svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3" fill="currentColor" fill-opacity="0.18"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/></svg>`,
+
+  // Ilustraciones Vectoriales Grandes para las Tarjetas de Selección de Rol (Página 5 del PDF)
   roleCommander: `<svg class="w-24 h-24 mx-auto" viewBox="0 0 96 96" fill="none">
     <rect x="18" y="62" width="60" height="22" rx="10" fill="#E2E8F0" stroke="#1E293B" stroke-width="3"/>
     <circle cx="48" cy="40" r="24" fill="#F8FAFC" stroke="#1E293B" stroke-width="3"/>
@@ -97,5 +99,16 @@ export const GAME_ICONS = {
     <path d="M70 72V52" stroke="#84CC16" stroke-width="4" stroke-linecap="round"/>
     <path d="M70 56C62 56 58 48 64 44C70 44 70 52 70 56Z" fill="#84CC16" stroke="#1E293B" stroke-width="2"/>
     <path d="M70 54C78 54 82 46 76 42C70 42 70 50 70 54Z" fill="#A3E635" stroke="#1E293B" stroke-width="2"/>
+  </svg>`,
+
+  roleRandom: `<svg class="w-24 h-24 mx-auto" viewBox="0 0 96 96" fill="none">
+    <rect x="20" y="20" width="56" height="56" rx="14" fill="#F59E0B" fill-opacity="0.22" stroke="#FBBF24" stroke-width="3"/>
+    <rect x="28" y="28" width="40" height="40" rx="10" fill="#1E293B" stroke="#FDE68A" stroke-width="2.5"/>
+    <circle cx="36" cy="36" r="3" fill="#38BDF8"/>
+    <circle cx="60" cy="36" r="3" fill="#34D399"/>
+    <circle cx="36" cy="60" r="3" fill="#F87171"/>
+    <circle cx="60" cy="60" r="3" fill="#FBBF24"/>
+    <path d="M43 42C43 38.5 46 36 49.5 36C53 36 55.5 38.5 55.5 41.5C55.5 44 53.5 45.5 51 47C49.2 48 48.5 49.2 48.5 51.5" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="48.5" cy="57.5" r="2.2" fill="#F8FAFC"/>
   </svg>`,
 } as const;

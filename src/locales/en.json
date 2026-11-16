@@ -87,12 +87,21 @@
     "subtitle": "SELECT SPECIALIZED CAREFULLY",
     "footer": "Choose your specialty. Your role will determine how you help the crew survive on Mars.",
     "selectBtn": "SELECT",
-    "selectedLabel": "Role selected:",
-    "roleSelectedLabel": "Role selected:",
+    "selectedLabel": "Assigned role:",
+    "roleSelectedLabel": "Assigned role:",
+    "assignedLabel": "Assigned role:",
     "startingMission": "STARTING MISSION...",
     "changeRoleBtn": "CHANGE ROLE",
     "startDay1Btn": "START DAY 1",
     "startDay1": "START DAY 1",
+    "random": {
+      "title": "Random Role",
+      "desc": "Let the mission computer randomly assign you any of the 4 space specialties.",
+      "perk": "Mission Draw: You can get Commander, Engineer, Medic, or Scientist.",
+      "btn": "RANDOM ROLE",
+      "rerollBtn": "ROLL AGAIN",
+      "badge": "RANDOM ASSIGNMENT COMPLETE"
+    },
     "commander": {
       "title": "Commander",
       "desc": "Lead the mission. Make final decisions when danger hits the colony.",

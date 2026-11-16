@@ -87,12 +87,21 @@
     "subtitle": "YACHAYNIKITA ALLINTA AKLLAY",
     "footer": "Yachaynikita akllay. Akllasqaykin rikuchinqa imaynatas aylluykita yanapanki Marte suyupi.",
     "selectBtn": "AKLLAY",
-    "selectedLabel": "Akllasqa ruway:",
-    "roleSelectedLabel": "Akllasqa ruway:",
+    "selectedLabel": "Chaskisqa ruway:",
+    "roleSelectedLabel": "Chaskisqa ruway:",
+    "assignedLabel": "Chaskisqa ruway:",
     "startingMission": "PURIYTA QALLARISHAN...",
     "changeRoleBtn": "RUWAYTA TIKRAY",
     "startDay1Btn": "1 P'UNCHAWTA QALLARIY",
     "startDay1": "1 P'UNCHAWTA QALLARIY",
+    "random": {
+      "title": "Mayqin Ruwaypas",
+      "desc": "Hanaq pacha yuyaqllaña 4 ruwaykunamanta mayqintapas qanpaq akllachun.",
+      "perk": "Puriy Akllay: Umalliq, Kamayuq, Hampiq utaq Hamawt'a lluqsimunman.",
+      "btn": "MAYQIN RUWAYPAS",
+      "rerollBtn": "WAKMANTA AKLLAY",
+      "badge": "SAPAQ AKLLAY TUKUSQA"
+    },
     "commander": {
       "title": "Umalliq",
       "desc": "Puriyta umalliy. Sasachakuy pachapi allin yuyayta akllay.",

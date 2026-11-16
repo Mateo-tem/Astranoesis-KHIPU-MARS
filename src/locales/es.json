@@ -87,12 +87,21 @@
     "subtitle": "ELIGE TU ESPECIALIDAD CON CUIDADO",
     "footer": "Elige tu especialidad. Tu rol decidirá cómo ayudas a tu tripulación a sobrevivir en Marte.",
     "selectBtn": "ELEGIR",
-    "selectedLabel": "Rol elegido:",
-    "roleSelectedLabel": "Rol elegido:",
+    "selectedLabel": "Rol asignado:",
+    "roleSelectedLabel": "Rol asignado:",
+    "assignedLabel": "Rol asignado:",
     "startingMission": "INICIANDO MISIÓN...",
     "changeRoleBtn": "CAMBIAR ROL",
     "startDay1Btn": "INICIAR DÍA 1",
     "startDay1": "INICIAR DÍA 1",
+    "random": {
+      "title": "Rol Aleatorio",
+      "desc": "Deja que la computadora de la misión te asigne al azar cualquiera de las 4 especialidades espaciales.",
+      "perk": "Sorteo de Misión: Puede tocarte Comandante, Ingeniero, Médico o Científico.",
+      "btn": "ROL ALEATORIO",
+      "rerollBtn": "SORTEAR OTRO",
+      "badge": "SORTEO ALEATORIO COMPLETADO"
+    },
     "commander": {
       "title": "Comandante",
       "desc": "Lidera la misión. Toma las decisiones finales cuando hay peligro en la colonia.",
